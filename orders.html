@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История заказов | ElbrusEat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .history-hero {
+            background: linear-gradient(135deg, #1a3a5c, #2d7d46);
+            background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .order-card {
+            border-left: 4px solid #2d7d46;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: transform 0.2s;
+        }
+        .order-card:hover {
+            transform: translateX(4px);
+        }
+        .status-paid { background: #2ecc71; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
+        .status-ready { background: #f39c12; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
+        .status-done { background: #95a5a6; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
+        .history-empty {
+            text-align: center;
+            padding: 4rem;
+            color: #95a5a6;
+        }
+        .repeat-btn {
+            background: none;
+            border: none;
+            color: #2d7d46;
+            cursor: pointer;
+        }
+        .repeat-btn:hover {
+            color: #1a5a2e;
+        }
+        footer {
+            background: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Хедер -->
+    <nav class="navbar is-fixed-top is-dark">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">
+                    🏔️ ElbrusEat
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="index.html">Главная</a>
+                    <a class="navbar-item" href="menu.html">Меню</a>
+                    <a class="navbar-item is-active" href="orders.html">История</a>
+                    <a class="navbar-item" href="faq.html">FAQ</a>
+                    <a class="navbar-item" href="contacts.html">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой -->
+    <section class="hero is-medium history-hero has-text-white">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-1 has-text-white">📜 История заказов</h1>
+                <p class="subtitle is-4 has-text-white">Все ваши заказы в кафе на Эльбрусе</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Список заказов -->
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-9">
+                    <div class="box">
+                        <div class="level">
+                            <div class="level-left">
+                                <h2 class="title is-4">Ваши заказы</h2>
+                            </div>
+                            <div class="level-right">
+                                <button class="button is-danger is-light is-small" onclick="clearHistory()">
+                                    <span class="icon"><i class="fas fa-trash"></i></span>
+                                    <span>Очистить историю</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="orderHistoryFull">
+                            <!-- Сюда загружается история -->
+                            <div class="history-empty">
+                                <i class="fas fa-history fa-4x has-text-grey-light"></i>
+                                <p class="is-size-4 mt-3">История пуста</p>
+                                <p class="has-text-grey">Сделайте первый заказ на <a href="index.html">главной странице</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="has-text-centered mt-4">
+                        <a href="index.html#order" class="button is-success is-medium">
+                            <span class="icon"><i class="fas fa-plus"></i></span>
+                            <span>Сделать новый заказ</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-4 has-text-white">🏔️ ElbrusEat</h3>
+                    <p class="has-text-grey-light">Кафе на вершине Эльбруса</p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Навигация</h4>
+                    <p><a class="has-text-grey-light" href="index.html">Главная</a></p>
+                    <p><a class="has-text-grey-light" href="menu.html">Меню</a></p>
+                    <p><a class="has-text-grey-light" href="orders.html">История</a></p>
+                    <p><a class="has-text-grey-light" href="faq.html">FAQ</a></p>
+                    <p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Контакты</h4>
+                    <p class="has-text-grey-light">+7 (928) 777-39-00</p>
+                    <p class="has-text-grey-light">eat@elbrus.ru</p>
+                </div>
+            </div>
+            <p class="has-text-centered has-text-grey-light">© 2026 ElbrusEat</p>
+        </div>
+    </footer>
+
+    <script>
+        // Загрузка полной истории при открытии страницы
+        document.addEventListener('DOMContentLoaded', loadFullHistory);
+
+        function loadFullHistory() {
+            const container = document.getElementById('orderHistoryFull');
+            const orders = JSON.parse(localStorage.getItem('elbrusOrders')) || [];
+            
+            if (orders.length === 0) {
+                container.innerHTML = `
+                    <div class="history-empty">
+                        <i class="fas fa-history fa-4x has-text-grey-light"></i>
+                        <p class="is-size-4 mt-3">История пуста</p>
+                        <p class="has-text-grey">Сделайте первый заказ на <a href="index.html">главной странице</a></p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Показываем все заказы (от новых к старым)
+            const reversed = [...orders].reverse();
+            let html = '';
+            reversed.forEach((order, index) => {
+                const statusClass = order.status === 'Оплачен' ? 'status-paid' : 
+                                   order.status === 'Готовится' ? 'status-ready' : 'status-done';
+                const dishesList = order.dishes.join(', ');
+                html += `
+                    <div class="box order-card">
+                        <div class="columns is-vcentered">
+                            <div class="column is-3">
+                                <strong>${order.name}</strong><br>
+                                <span class="has-text-grey is-size-7">${order.date}</span>
+                            </div>
+                            <div class="column is-4">
+                                <span class="tag is-medium">${dishesList}</span><br>
+                                <span class="has-text-grey is-size-7">${order.time ? 'К '+order.time : ''}</span>
+                            </div>
+                            <div class="column is-2">
+                                <strong class="is-size-5">${order.total} ₽</strong>
+                            </div>
+                            <div class="column is-2">
+                                <span class="${statusClass}">${order.status}</span>
+                            </div>
+                            <div class="column is-1">
+                                <button class="repeat-btn" onclick="repeatOrder(${index})" title="Повторить заказ">
+                                    <i class="fas fa-redo fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        ${order.comment ? `<div class="has-text-grey is-size-7 mt-2">💬 ${order.comment}</div>` : ''}
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // Функция повторного заказа (перенаправляет на главную с заполненными данными)
+        function repeatOrder(index) {
+            const orders = JSON.parse(localStorage.getItem('elbrusOrders')) || [];
+            const order = orders.reverse()[index]; // получаем заказ
+            if (order) {
+                alert('🔄 Повторяем заказ: ' + order.dishes.join(', ') + ' (сумма ' + order.total + ' ₽)');
+                // Перенаправляем на главную
+                window.location.href = 'index.html#order';
+            }
+        }
+
+        // Очистка истории
+        function clearHistory() {
+            if (confirm('Вы уверены, что хотите очистить всю историю заказов?')) {
+                localStorage.removeItem('elbrusOrders');
+                loadFullHistory();
+                alert('✅ История очищена');
+            }
+        }
+    </script>
+
+</body>
+</html>

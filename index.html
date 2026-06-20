@@ -61,6 +61,26 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
+        /* Стили для истории заказов */
+        .order-card {
+            border-left: 4px solid #2d7d46;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .order-card .order-status {
+            font-weight: bold;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .status-paid { background: #2ecc71; color: white; }
+        .status-ready { background: #f39c12; color: white; }
+        .status-done { background: #95a5a6; color: white; }
+        .history-empty {
+            text-align: center;
+            padding: 3rem;
+            color: #95a5a6;
+        }
     </style>
 </head>
 <body>
@@ -83,6 +103,11 @@
                     <a class="navbar-item" href="#about">О нас</a>
                     <a class="navbar-item" href="faq.html">FAQ</a>
                     <a class="navbar-item" href="contacts.html">Контакты</a>
+                    <!-- НОВАЯ ССЫЛКА НА ИСТОРИЮ -->
+                    <a class="navbar-item" href="orders.html">
+                        <span class="icon"><i class="fas fa-history"></i></span>
+                        <span>История</span>
+                    </a>
                     <a class="button is-success is-light" href="#order" style="margin: 8px 0;">
                         <span class="icon"><i class="fas fa-shopping-cart"></i></span>
                         <span>Заказать</span>
@@ -208,7 +233,7 @@
         </div>
     </section>
 
-    <!-- ФОРМА ЗАКАЗА (УПРОЩЁННАЯ) -->
+    <!-- ФОРМА ЗАКАЗА С ПРЕДОПЛАТОЙ И СОХРАНЕНИЕМ В ИСТОРИЮ -->
     <section id="order" class="section">
         <div class="container">
             <div class="columns is-centered">
@@ -220,37 +245,46 @@
                             <div class="field">
                                 <label class="label">Ваше имя <span class="has-text-danger">*</span></label>
                                 <div class="control has-icons-left">
-                                    <input class="input" type="text" id="orderName" placeholder="Иван Петров">
+                                    <input class="input" type="text" id="orderName" placeholder="Иван Петров" required>
                                     <span class="icon is-small is-left"><i class="fas fa-user"></i></span>
                                 </div>
                             </div>
                             <div class="field">
                                 <label class="label">Телефон <span class="has-text-danger">*</span></label>
                                 <div class="control has-icons-left">
-                                    <input class="input" type="tel" id="orderPhone" placeholder="+7 (999) 123-45-67">
+                                    <input class="input" type="tel" id="orderPhone" placeholder="+7 (999) 123-45-67" required>
                                     <span class="icon is-small is-left"><i class="fas fa-phone"></i></span>
                                 </div>
                             </div>
                             <div class="field">
                                 <label class="label">Время получения <span class="has-text-danger">*</span></label>
                                 <div class="control has-icons-left">
-                                    <input class="input" type="datetime-local" id="orderTime">
+                                    <input class="input" type="datetime-local" id="orderTime" required>
                                     <span class="icon is-small is-left"><i class="fas fa-clock"></i></span>
                                 </div>
                             </div>
                             <div class="field">
                                 <label class="label">Выберите блюда</label>
                                 <div class="control">
-                                    <label class="checkbox"><input type="checkbox" value="Хачапури"> Хачапури (890 ₽)</label><br>
-                                    <label class="checkbox"><input type="checkbox" value="Борщ"> Борщ (750 ₽)</label><br>
-                                    <label class="checkbox"><input type="checkbox" value="Горный чай"> Горный чай (350 ₽)</label><br>
-                                    <label class="checkbox"><input type="checkbox" value="Плов"> Плов (1020 ₽)</label>
+                                    <label class="checkbox"><input type="checkbox" value="Хачапури" data-price="890"> Хачапури (890 ₽)</label><br>
+                                    <label class="checkbox"><input type="checkbox" value="Борщ" data-price="750"> Борщ (750 ₽)</label><br>
+                                    <label class="checkbox"><input type="checkbox" value="Горный чай" data-price="350"> Горный чай (350 ₽)</label><br>
+                                    <label class="checkbox"><input type="checkbox" value="Плов" data-price="1020"> Плов (1020 ₽)</label><br>
+                                    <label class="checkbox"><input type="checkbox" value="Солянка" data-price="820"> Солянка (820 ₽)</label><br>
+                                    <label class="checkbox"><input type="checkbox" value="Пельмени" data-price="680"> Пельмени (680 ₽)</label>
                                 </div>
                             </div>
                             <div class="field">
                                 <label class="label">Комментарий к заказу</label>
                                 <div class="control">
                                     <textarea class="textarea" id="orderComment" placeholder="Например: без лука, добавьте лимон..."></textarea>
+                                </div>
+                            </div>
+                            <!-- БЛОК С ИТОГОМ И ПРЕДОПЛАТОЙ -->
+                            <div class="field">
+                                <label class="label">Сумма к оплате:</label>
+                                <div class="control">
+                                    <h3 class="title is-3" id="totalPrice">0 ₽</h3>
                                 </div>
                             </div>
                             <div class="field">
@@ -265,12 +299,34 @@
                                 <div class="control">
                                     <button class="button is-success is-fullwidth is-medium" type="submit">
                                         <span class="icon"><i class="fas fa-credit-card"></i></span>
-                                        <span>Перейти к оплате (предоплата 100%)</span>
+                                        <span>Оплатить 100% предоплату</span>
                                     </button>
                                 </div>
                             </div>
                             <p class="has-text-grey is-size-7 has-text-centered">🔒 Все платежи защищены. Оплата через защищённый шлюз.</p>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК С ПОСЛЕДНИМИ ЗАКАЗАМИ (ПРЕВЬЮ ИСТОРИИ) -->
+    <section id="last-orders" class="section has-background-light">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <h2 class="title is-2 has-text-centered">📜 Ваши последние заказы</h2>
+                    <div id="orderHistoryPreview">
+                        <!-- Сюда будет вставляться история из LocalStorage -->
+                        <div class="history-empty">
+                            <i class="fas fa-history fa-3x has-text-grey-light"></i>
+                            <p class="is-size-5 mt-3">У вас пока нет заказов.</p>
+                            <p class="has-text-grey">Сделайте первый заказ, и он появится здесь!</p>
+                        </div>
+                    </div>
+                    <div class="has-text-centered mt-4">
+                        <a href="orders.html" class="button is-link">Полная история заказов →</a>
                     </div>
                 </div>
             </div>
@@ -290,6 +346,7 @@
                     <h4 class="title is-5 has-text-white">Навигация</h4>
                     <p><a class="has-text-grey-light" href="index.html">Главная</a></p>
                     <p><a class="has-text-grey-light" href="menu.html">Меню</a></p>
+                    <p><a class="has-text-grey-light" href="orders.html">История заказов</a></p>
                     <p><a class="has-text-grey-light" href="faq.html">FAQ</a></p>
                     <p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p>
                 </div>
@@ -322,22 +379,136 @@
                     menu.classList.toggle('is-active');
                 });
             }
+            // Загружаем превью истории
+            loadOrderPreview();
+            // Считаем сумму при выборе блюд
+            calculateTotal();
         });
 
-        // Обработка формы заказа
-        document.getElementById('orderForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('orderName').value.trim();
-            if (!name) {
-                alert('Пожалуйста, введите ваше имя');
+        // Функция подсчёта суммы
+        function calculateTotal() {
+            const checkboxes = document.querySelectorAll('#orderForm input[type="checkbox"]');
+            const totalSpan = document.getElementById('totalPrice');
+            
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    let total = 0;
+                    checkboxes.forEach(c => {
+                        if (c.checked) {
+                            total += parseInt(c.dataset.price);
+                        }
+                    });
+                    totalSpan.textContent = total + ' ₽';
+                });
+            });
+        }
+
+        // Функция загрузки превью истории (последние 3 заказа)
+        function loadOrderPreview() {
+            const container = document.getElementById('orderHistoryPreview');
+            const orders = JSON.parse(localStorage.getItem('elbrusOrders')) || [];
+            
+            if (orders.length === 0) {
+                container.innerHTML = `
+                    <div class="history-empty">
+                        <i class="fas fa-history fa-3x has-text-grey-light"></i>
+                        <p class="is-size-5 mt-3">У вас пока нет заказов.</p>
+                        <p class="has-text-grey">Сделайте первый заказ, и он появится здесь!</p>
+                    </div>
+                `;
                 return;
             }
+
+            // Показываем последние 3 заказа
+            const lastOrders = orders.slice(-3).reverse();
+            let html = '';
+            lastOrders.forEach((order, index) => {
+                const statusClass = order.status === 'Оплачен' ? 'status-paid' : 
+                                   order.status === 'Готовится' ? 'status-ready' : 'status-done';
+                html += `
+                    <div class="box order-card">
+                        <div class="columns is-vcentered">
+                            <div class="column is-4">
+                                <strong>${order.name}</strong><br>
+                                <span class="has-text-grey is-size-7">${order.date}</span>
+                            </div>
+                            <div class="column is-4">
+                                <span class="tag">${order.dishes.join(', ')}</span>
+                            </div>
+                            <div class="column is-2">
+                                <strong>${order.total} ₽</strong>
+                            </div>
+                            <div class="column is-2">
+                                <span class="order-status ${statusClass}">${order.status}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // Обработка формы заказа (СОХРАНЕНИЕ В ИСТОРИЮ!)
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('orderName').value.trim();
+            const phone = document.getElementById('orderPhone').value.trim();
+            const time = document.getElementById('orderTime').value;
+            const comment = document.getElementById('orderComment').value.trim();
+            const agreement = document.getElementById('orderAgreement').checked;
+            
+            // Валидация
+            if (!name || !phone || !time) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return;
+            }
+            
             const checked = document.querySelectorAll('#orderForm input[type="checkbox"]:checked');
             if (checked.length === 0) {
                 alert('Выберите хотя бы одно блюдо');
                 return;
             }
-            alert('✅ Заказ принят! Вы будете перенаправлены на страницу оплаты.');
+            
+            if (!agreement) {
+                alert('Необходимо дать согласие на обработку данных');
+                return;
+            }
+            
+            // Собираем данные заказа
+            const dishes = [];
+            let total = 0;
+            checked.forEach(cb => {
+                dishes.push(cb.value);
+                total += parseInt(cb.dataset.price);
+            });
+            
+            const orderData = {
+                id: Date.now(),
+                name: name,
+                phone: phone,
+                time: time,
+                dishes: dishes,
+                total: total,
+                comment: comment || 'Без комментария',
+                status: 'Оплачен',
+                date: new Date().toLocaleString('ru-RU')
+            };
+            
+            // СОХРАНЯЕМ В LOCALSTORAGE (ИСТОРИЯ!)
+            let orders = JSON.parse(localStorage.getItem('elbrusOrders')) || [];
+            orders.push(orderData);
+            localStorage.setItem('elbrusOrders', JSON.stringify(orders));
+            
+            // Обновляем превью на главной
+            loadOrderPreview();
+            
+            alert('✅ Заказ успешно оформлен! Сумма: ' + total + ' ₽ (предоплата 100%)');
+            alert('📜 Заказ сохранён в историю. Перейдите в раздел "История" чтобы посмотреть все заказы.');
+            
+            // Очищаем форму (опционально)
+            // this.reset();
+            // document.getElementById('totalPrice').textContent = '0 ₽';
         });
     </script>
 
