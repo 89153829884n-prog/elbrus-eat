@@ -20,75 +20,27 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.55);
         }
-        .hero-elbrus .container {
-            position: relative;
-            z-index: 1;
-        }
-        .card-service {
-            border-radius: 16px;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        .card-service:hover {
-            transform: translateY(-5px);
-        }
+        .hero-elbrus .container { position: relative; z-index: 1; }
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: #2d7d46;
-            color: white;
-            font-size: 28px;
-            margin: 0 auto 16px;
+            width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: #2d7d46; color: white; font-size: 28px; margin: 0 auto 16px;
         }
-        .price-tag {
-            background: #f1c40f;
-            color: #1a1a2e;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-        .can-icon {
-            color: #7f8c8d;
-            font-size: 0.75rem;
-        }
-        footer {
-            background: #1a1a2e;
-        }
-        .snow-icon {
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .order-card {
-            border-left: 4px solid #2d7d46;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-        .order-card .order-status {
-            font-weight: bold;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
+        .price-tag { background: #f1c40f; color: #1a1a2e; padding: 4px 12px; border-radius: 20px; font-weight: bold; }
+        .can-icon { color: #7f8c8d; font-size: 0.75rem; }
+        footer { background: #1a1a2e; }
+        .snow-icon { animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+        .order-card { border-left: 4px solid #2d7d46; border-radius: 8px; margin-bottom: 1rem; }
+        .order-card .order-status { font-weight: bold; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
         .status-paid { background: #2ecc71; color: white; }
         .status-ready { background: #f39c12; color: white; }
         .status-done { background: #95a5a6; color: white; }
-        .history-empty {
-            text-align: center;
-            padding: 3rem;
-            color: #95a5a6;
-        }
-        .cta-section {
-            background: linear-gradient(135deg, #1a3a5c, #2d7d46);
-            border-radius: 16px;
-            padding: 3rem 2rem;
-        }
+        .history-empty { text-align: center; padding: 3rem; color: #95a5a6; }
+        .cta-section { background: linear-gradient(135deg, #1a3a5c, #2d7d46); border-radius: 16px; padding: 3rem 2rem; }
+        .code-box { background: #f8f9fa; border-radius: 12px; padding: 2rem; max-width: 500px; margin: 0 auto; }
+        .code-display { font-size: 2.5rem; font-weight: 900; letter-spacing: 8px; background: #1a1a2e; color: #2ecc71; padding: 0.5rem 1.5rem; border-radius: 12px; display: inline-block; font-family: monospace; }
+        .section-title { color: #1a1a2e; font-weight: 700; }
+        .section-title-light { color: #2d7d46; }
     </style>
 </head>
 <body>
@@ -97,56 +49,33 @@
     <nav class="navbar is-fixed-top is-dark" role="navigation">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">
-                    🏔️ ElbrusEat
-                </a>
-                <span class="navbar-burger" data-target="navMenu">
-                    <span></span><span></span><span></span>
-                </span>
+                <a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">🏔️ ElbrusEat</a>
+                <span class="navbar-burger" data-target="navMenu"><span></span><span></span><span></span></span>
             </div>
             <div id="navMenu" class="navbar-menu">
                 <div class="navbar-end">
                     <a class="navbar-item is-active" href="index.html">Главная</a>
                     <a class="navbar-item" href="menu.html">Меню</a>
-                    <a class="navbar-item" href="#about">О нас</a>
+                    <a class="navbar-item" href="about.html">О нас</a>
                     <a class="navbar-item" href="faq.html">FAQ</a>
                     <a class="navbar-item" href="contacts.html">Контакты</a>
-                    <a class="navbar-item" href="orders.html">
-                        <span class="icon"><i class="fas fa-history"></i></span>
-                        <span>История</span>
-                    </a>
-                    <a class="button is-success is-light" href="menu.html" style="margin: 8px 0;">
-                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
-                        <span>Заказать</span>
-                    </a>
+                    <a class="navbar-item" href="orders.html"><span class="icon"><i class="fas fa-history"></i></span><span>История</span></a>
+                    <a class="button is-success is-light" href="menu.html" style="margin:8px 0;"><span class="icon"><i class="fas fa-shopping-cart"></i></span><span>Заказать</span></a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- ГЕРОЙ-СЕКЦИЯ -->
+    <!-- ГЕРОЙ -->
     <section class="hero is-fullheight hero-elbrus">
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="snow-icon" style="font-size:4rem; margin-bottom:1rem;">❄️</div>
-                <h1 class="title is-1 has-text-white" style="text-shadow: 0 2px 20px rgba(0,0,0,0.6);">
-                    Еда на высоте 3900 м
-                </h1>
-                <p class="subtitle is-3 has-text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
-                    Закажите горячий обед в кафе «Приют одиннадцати»
-                </p>
-                <p class="has-text-white is-size-5" style="max-width:600px; margin: 1rem auto; opacity:0.9;">
-                    💳 Предоплата онлайн • 📜 История заказов • ⏱️ Готовность к вашему приходу
-                </p>
+                <h1 class="title is-1 has-text-white" style="text-shadow:0 2px 20px rgba(0,0,0,0.6);">Еда на высоте 3900 м</h1>
+                <p class="subtitle is-3 has-text-white" style="text-shadow:0 2px 10px rgba(0,0,0,0.5);">Закажите горячий обед в кафе «Приют одиннадцати»</p>
+                <p class="has-text-white is-size-5" style="max-width:600px; margin:1rem auto; opacity:0.9;">💳 Предоплата онлайн • 📜 История заказов • ⏱️ Готовность к вашему приходу</p>
                 <div class="buttons is-centered" style="margin-top:2rem;">
-                    <a href="menu.html" class="button is-success is-large">
-                        <span class="icon"><i class="fas fa-utensils"></i></span>
-                        <span>Смотреть меню</span>
-                    </a>
-                    <a href="menu.html" class="button is-light is-large">
-                        <span class="icon"><i class="fas fa-credit-card"></i></span>
-                        <span>Заказать с предоплатой</span>
-                    </a>
+                    <a href="menu.html" class="button is-success is-large"><span class="icon"><i class="fas fa-utensils"></i></span><span>Смотреть меню</span></a>
                 </div>
                 <div style="margin-top:2rem;">
                     <span class="tag is-light is-medium">🚀 Работаем с 8:00 до 20:00</span>
@@ -156,79 +85,84 @@
         </div>
     </section>
 
-    <!-- О НАС -->
-    <section id="about" class="section">
+    <!-- СИСТЕМА КОДОВ (ВХОД БЕЗ РЕГИСТРАЦИИ) -->
+    <section class="section" style="background:#f0f4f8;">
         <div class="container">
-            <h2 class="title is-2 has-text-centered">Почему выбирают ElbrusEat?</h2>
+            <h2 class="title is-2 has-text-centered" style="color:#1a1a2e;">🔑 Вход в личный кабинет</h2>
+            <p class="has-text-centered has-text-grey">Получите персональный код для доступа к истории заказов</p>
             <div class="columns is-centered" style="margin-top:2rem;">
-                <div class="column is-4 has-text-centered">
-                    <div class="feature-icon">
-                        <i class="fas fa-mountain"></i>
+                <div class="column is-5">
+                    <div class="code-box">
+                        <h3 class="title is-5 has-text-centered">Новый посетитель</h3>
+                        <p class="has-text-centered has-text-grey is-size-7">Нажмите кнопку, чтобы получить ваш уникальный код</p>
+                        <div class="has-text-centered" style="margin:1.5rem 0;">
+                            <button class="button is-success is-large" id="generateCodeBtn">
+                                <span class="icon"><i class="fas fa-key"></i></span>
+                                <span>Получить код</span>
+                            </button>
+                        </div>
+                        <div id="newCodeDisplay" class="has-text-centered" style="display:none;">
+                            <p class="has-text-grey is-size-7">Ваш персональный код:</p>
+                            <div class="code-display" id="generatedCode">XXXXX</div>
+                            <p class="has-text-grey is-size-7 mt-3">Сохраните его! Код нужен для входа в историю заказов.</p>
+                            <button class="button is-primary is-small mt-2" onclick="copyCode()"><i class="fas fa-copy"></i> Копировать</button>
+                        </div>
                     </div>
-                    <h3 class="title is-5">Кафе на вершине</h3>
-                    <p>Единственное кафе на южном склоне Эльбруса с горячими блюдами и видом на горы.</p>
                 </div>
-                <div class="column is-4 has-text-centered">
-                    <div class="feature-icon">
-                        <i class="fas fa-credit-card"></i>
+                <div class="column is-5">
+                    <div class="code-box">
+                        <h3 class="title is-5 has-text-centered">Уже есть код?</h3>
+                        <p class="has-text-centered has-text-grey is-size-7">Введите ваш 5-значный код для входа</p>
+                        <div class="field" style="margin:1.5rem 0;">
+                            <div class="control">
+                                <input class="input is-large has-text-centered" type="text" id="loginCode" placeholder="Например: A7K3F" maxlength="5" style="text-transform:uppercase; font-weight:bold; letter-spacing:4px;">
+                            </div>
+                        </div>
+                        <div class="has-text-centered">
+                            <button class="button is-primary is-large" id="loginBtn">Войти</button>
+                        </div>
+                        <div id="loginError" class="has-text-danger has-text-centered mt-2" style="display:none;">❌ Неверный код. Попробуйте снова.</div>
                     </div>
-                    <h3 class="title is-5">Предоплата онлайн</h3>
-                    <p>Оплатите заказ картой заранее — мы приготовим его точно к вашему приходу.</p>
                 </div>
-                <div class="column is-4 has-text-centered">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3 class="title is-5">История заказов</h3>
-                    <p>Все ваши заказы сохраняются — повторите любимое блюдо в один клик.</p>
-                </div>
+            </div>
+            <div id="currentUserDisplay" class="has-text-centered mt-4" style="display:none;">
+                <span class="tag is-success is-medium">✅ Вы вошли как: <strong id="currentUserCode">—</strong></span>
+                <button class="button is-danger is-small" id="logoutBtn">Выйти</button>
             </div>
         </div>
     </section>
 
-    <!-- ПОПУЛЯРНЫЕ БЛЮДА (НОВЫЕ! РЕСТОРАННЫЕ ИЗ КОНСЕРВОВ) -->
+    <!-- ПОПУЛЯРНЫЕ БЛЮДА (ЯРКИЙ ЗАГОЛОВОК) -->
     <section class="section has-background-light">
         <div class="container">
-            <h2 class="title is-2 has-text-centered">🔥 Самые популярные блюда</h2>
+            <h2 class="title is-2 has-text-centered" style="color:#1a1a2e; font-weight:800;">🔥 Самые популярные блюда</h2>
             <p class="has-text-centered has-text-grey mb-5">Приготовлены на профессиональной кухне из продуктов длительного хранения</p>
             <div class="columns">
                 <div class="column is-4">
-                    <div class="card card-service">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Солянка+сборная" alt="Солянка">
-                            </figure>
-                        </div>
+                    <div class="card">
+                        <div class="card-image"><figure class="image is-4by3"><img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Солянка" alt="Солянка"></figure></div>
                         <div class="card-content">
                             <h3 class="title is-5">Солянка сборная мясная</h3>
-                            <p class="has-text-grey is-size-7">Говядина тушёная, ветчина, солёные огурцы, оливки</p>
+                            <p class="has-text-grey is-size-7">Говядина тушёная, ветчина, огурцы, оливки</p>
                             <p class="can-icon"><i class="fas fa-can-food"></i> Все ингредиенты из консервов</p>
                             <p><span class="price-tag">890 ₽</span></p>
                         </div>
                     </div>
                 </div>
                 <div class="column is-4">
-                    <div class="card card-service">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Гуляш" alt="Гуляш">
-                            </figure>
-                        </div>
+                    <div class="card">
+                        <div class="card-image"><figure class="image is-4by3"><img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Гуляш" alt="Гуляш"></figure></div>
                         <div class="card-content">
                             <h3 class="title is-5">Гуляш по-венгерски</h3>
-                            <p class="has-text-grey is-size-7">Говядина тушёная, паприка, томат, картофель, сметана</p>
+                            <p class="has-text-grey is-size-7">Говядина тушёная, паприка, томат, картофель</p>
                             <p class="can-icon"><i class="fas fa-can-food"></i> Мясо — тушёнка премиум-класса</p>
                             <p><span class="price-tag">920 ₽</span></p>
                         </div>
                     </div>
                 </div>
                 <div class="column is-4">
-                    <div class="card card-service">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Плов" alt="Плов">
-                            </figure>
-                        </div>
+                    <div class="card">
+                        <div class="card-image"><figure class="image is-4by3"><img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Плов" alt="Плов"></figure></div>
                         <div class="card-content">
                             <h3 class="title is-5">Плов с бараниной</h3>
                             <p class="has-text-grey is-size-7">Баранина тушёная, рис, морковь, зира, барбарис</p>
@@ -244,73 +178,33 @@
         </div>
     </section>
 
-    <!-- ЧТО МЫ ПРЕДЛАГАЕМ (БЛОК О КУХНЕ) -->
-    <section class="section">
-        <div class="container">
-            <div class="columns is-vcentered">
-                <div class="column is-6">
-                    <h2 class="title is-2">Как мы готовим на высоте</h2>
-                    <p class="is-size-5">
-                        Наш повар работает на профессиональном оборудовании. Мы используем только 
-                        <strong>консервы высшего качества</strong>: тушёнку, паштеты, овощные заготовки, 
-                        сгущёнку и крупы. Это позволяет создавать блюда ресторанного уровня, 
-                        не завися от логистики.
-                    </p>
-                    <ul class="mt-4">
-                        <li>🥫 <strong>Тушёная говядина и баранина</strong> — основа горячих блюд</li>
-                        <li>🍲 <strong>Банки с овощами</strong> — свёкла, морковь, перец, кукуруза</li>
-                        <li>🌾 <strong>Крупы</strong> — гречка, рис, чечевица</li>
-                        <li>🧀 <strong>Сыр и сливки</strong> — в банках и коробках</li>
-                        <li>☕ <strong>Натуральный кофе и чай</strong> — заварка из пакетов</li>
-                    </ul>
-                </div>
-                <div class="column is-6 has-text-centered">
-                    <div style="background:#2d7d46; border-radius:16px; padding:3rem 2rem; color:white;">
-                        <i class="fas fa-chef-hat fa-4x" style="opacity:0.8;"></i>
-                        <h3 class="title is-4 has-text-white mt-3">Шеф-повар на высоте</h3>
-                        <p class="has-text-white">Готовим так, как будто вы в ресторане в Москве</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ПРЕВЬЮ ПОСЛЕДНИХ ЗАКАЗОВ -->
-    <section id="last-orders" class="section has-background-light">
+    <!-- ПРЕВЬЮ ПОСЛЕДНИХ ЗАКАЗОВ (ЯРКИЙ) -->
+    <section id="last-orders" class="section">
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-8">
-                    <h2 class="title is-2 has-text-centered">📜 Ваши последние заказы</h2>
+                    <h2 class="title is-2 has-text-centered" style="color:#1a1a2e; font-weight:700;">📜 Ваши последние заказы</h2>
                     <div id="orderHistoryPreview">
-                        <div class="history-empty">
-                            <i class="fas fa-history fa-3x has-text-grey-light"></i>
-                            <p class="is-size-5 mt-3">У вас пока нет заказов.</p>
-                            <p class="has-text-grey">Сделайте первый заказ через меню!</p>
-                        </div>
+                        <div class="history-empty"><i class="fas fa-history fa-3x has-text-grey-light"></i><p class="is-size-5 mt-3">У вас пока нет заказов.</p><p class="has-text-grey">Сделайте первый заказ через меню!</p></div>
                     </div>
                     <div class="has-text-centered mt-4">
-                        <a href="orders.html" class="button is-link">Полная история заказов →</a>
+                        <a href="orders.html" class="button is-link is-medium">Полная история заказов →</a>
+                        <button class="button is-danger is-light is-medium" id="clearHistoryBtn"><i class="fas fa-trash"></i> Очистить мою историю</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA — ПРИЗЫВ К ДЕЙСТВИЮ (ВМЕСТО ФОРМЫ) -->
+    <!-- CTA -->
     <section class="section">
         <div class="container">
             <div class="cta-section has-text-white has-text-centered">
                 <h2 class="title is-2 has-text-white">Готовы заказать?</h2>
                 <p class="subtitle is-5 has-text-white">Выберите блюда в меню, добавьте в корзину и оплатите онлайн</p>
                 <div class="buttons is-centered">
-                    <a href="menu.html" class="button is-light is-large">
-                        <span class="icon"><i class="fas fa-utensils"></i></span>
-                        <span>Перейти в меню</span>
-                    </a>
-                    <a href="orders.html" class="button is-success is-large">
-                        <span class="icon"><i class="fas fa-history"></i></span>
-                        <span>Мои заказы</span>
-                    </a>
+                    <a href="menu.html" class="button is-light is-large"><span class="icon"><i class="fas fa-utensils"></i></span><span>Перейти в меню</span></a>
+                    <a href="orders.html" class="button is-success is-large"><span class="icon"><i class="fas fa-history"></i></span><span>Мои заказы</span></a>
                 </div>
             </div>
         </div>
@@ -329,6 +223,7 @@
                     <h4 class="title is-5 has-text-white">Навигация</h4>
                     <p><a class="has-text-grey-light" href="index.html">Главная</a></p>
                     <p><a class="has-text-grey-light" href="menu.html">Меню</a></p>
+                    <p><a class="has-text-grey-light" href="about.html">О нас</a></p>
                     <p><a class="has-text-grey-light" href="orders.html">История заказов</a></p>
                     <p><a class="has-text-grey-light" href="faq.html">FAQ</a></p>
                     <p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p>
@@ -352,6 +247,141 @@
     </footer>
 
     <script>
+        // ======== СИСТЕМА КОДОВ ========
+        let currentUser = localStorage.getItem('elbrusUser') || null;
+
+        function generateCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < 5; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+
+        function saveUser(code) {
+            localStorage.setItem('elbrusUser', code);
+            currentUser = code;
+            // Создаём хранилище для заказов этого пользователя
+            if (!localStorage.getItem('elbrusOrders_' + code)) {
+                localStorage.setItem('elbrusOrders_' + code, JSON.stringify([]));
+            }
+            updateUI();
+        }
+
+        function getOrders() {
+            if (!currentUser) return [];
+            const data = localStorage.getItem('elbrusOrders_' + currentUser);
+            return data ? JSON.parse(data) : [];
+        }
+
+        function saveOrders(orders) {
+            if (!currentUser) return;
+            localStorage.setItem('elbrusOrders_' + currentUser, JSON.stringify(orders));
+        }
+
+        function updateUI() {
+            const display = document.getElementById('currentUserDisplay');
+            const codeSpan = document.getElementById('currentUserCode');
+            if (currentUser) {
+                display.style.display = 'block';
+                codeSpan.textContent = currentUser;
+                loadOrderPreview();
+            } else {
+                display.style.display = 'none';
+                document.getElementById('orderHistoryPreview').innerHTML = `
+                    <div class="history-empty"><i class="fas fa-history fa-3x has-text-grey-light"></i><p class="is-size-5 mt-3">Войдите, чтобы увидеть историю заказов</p></div>
+                `;
+            }
+        }
+
+        // Генерация кода
+        document.getElementById('generateCodeBtn').addEventListener('click', function() {
+            const code = generateCode();
+            document.getElementById('generatedCode').textContent = code;
+            document.getElementById('newCodeDisplay').style.display = 'block';
+            // Автоматически сохраняем пользователя
+            saveUser(code);
+            alert('✅ Ваш код: ' + code + '. Сохраните его!');
+        });
+
+        function copyCode() {
+            const code = document.getElementById('generatedCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('✅ Код скопирован: ' + code);
+            });
+        }
+
+        // Вход по коду
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            const input = document.getElementById('loginCode').value.trim().toUpperCase();
+            if (input.length !== 5) {
+                document.getElementById('loginError').style.display = 'block';
+                return;
+            }
+            // Проверяем, существует ли пользователь с таким кодом
+            const testOrders = localStorage.getItem('elbrusOrders_' + input);
+            if (testOrders !== null) {
+                saveUser(input);
+                document.getElementById('loginError').style.display = 'none';
+                document.getElementById('loginCode').value = '';
+                alert('✅ Вход выполнен! Добро пожаловать, ' + input);
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+
+        // Выход
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('elbrusUser');
+            currentUser = null;
+            updateUI();
+            alert('✅ Вы вышли из системы');
+        });
+
+        // Очистка истории
+        document.getElementById('clearHistoryBtn').addEventListener('click', function() {
+            if (!currentUser) {
+                alert('Сначала войдите в систему!');
+                return;
+            }
+            if (confirm('Вы уверены, что хотите очистить ВСЮ историю заказов?')) {
+                saveOrders([]);
+                loadOrderPreview();
+                alert('✅ История очищена');
+            }
+        });
+
+        // Загрузка превью
+        function loadOrderPreview() {
+            const container = document.getElementById('orderHistoryPreview');
+            if (!currentUser) {
+                container.innerHTML = `<div class="history-empty"><i class="fas fa-history fa-3x has-text-grey-light"></i><p class="is-size-5 mt-3">Войдите, чтобы увидеть историю заказов</p></div>`;
+                return;
+            }
+            const orders = getOrders();
+            if (orders.length === 0) {
+                container.innerHTML = `<div class="history-empty"><i class="fas fa-history fa-3x has-text-grey-light"></i><p class="is-size-5 mt-3">У вас пока нет заказов.</p><p class="has-text-grey">Сделайте первый заказ через меню!</p></div>`;
+                return;
+            }
+            const lastOrders = orders.slice(-3).reverse();
+            let html = '';
+            lastOrders.forEach((order) => {
+                const statusClass = order.status === 'Оплачен' ? 'status-paid' : 'status-ready';
+                html += `
+                    <div class="box order-card">
+                        <div class="columns is-vcentered">
+                            <div class="column is-4"><strong>${order.name}</strong><br><span class="has-text-grey is-size-7">${order.date}</span></div>
+                            <div class="column is-4"><span class="tag">${order.dishes.join(', ')}</span></div>
+                            <div class="column is-2"><strong>${order.total} ₽</strong></div>
+                            <div class="column is-2"><span class="order-status ${statusClass}">${order.status}</span></div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
         // Бургер-меню
         document.addEventListener('DOMContentLoaded', () => {
             const burger = document.querySelector('.navbar-burger');
@@ -362,52 +392,20 @@
                     menu.classList.toggle('is-active');
                 });
             }
-            loadOrderPreview();
-        });
-
-        // Загрузка превью истории
-        function loadOrderPreview() {
-            const container = document.getElementById('orderHistoryPreview');
-            const orders = JSON.parse(localStorage.getItem('elbrusOrders')) || [];
-            
-            if (orders.length === 0) {
-                container.innerHTML = `
-                    <div class="history-empty">
-                        <i class="fas fa-history fa-3x has-text-grey-light"></i>
-                        <p class="is-size-5 mt-3">У вас пока нет заказов.</p>
-                        <p class="has-text-grey">Сделайте первый заказ через меню!</p>
-                    </div>
-                `;
-                return;
+            // Если пользователь уже есть — показываем
+            if (currentUser) {
+                updateUI();
+            } else {
+                // Проверяем, может быть старый пользователь уже сохранён
+                const saved = localStorage.getItem('elbrusUser');
+                if (saved) {
+                    currentUser = saved;
+                    updateUI();
+                } else {
+                    updateUI();
+                }
             }
-
-            const lastOrders = orders.slice(-3).reverse();
-            let html = '';
-            lastOrders.forEach((order) => {
-                const statusClass = order.status === 'Оплачен' ? 'status-paid' : 
-                                   order.status === 'Готовится' ? 'status-ready' : 'status-done';
-                html += `
-                    <div class="box order-card">
-                        <div class="columns is-vcentered">
-                            <div class="column is-4">
-                                <strong>${order.name}</strong><br>
-                                <span class="has-text-grey is-size-7">${order.date}</span>
-                            </div>
-                            <div class="column is-4">
-                                <span class="tag">${order.dishes.join(', ')}</span>
-                            </div>
-                            <div class="column is-2">
-                                <strong>${order.total} ₽</strong>
-                            </div>
-                            <div class="column is-2">
-                                <span class="order-status ${statusClass}">${order.status}</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
+        });
     </script>
 
 </body>
