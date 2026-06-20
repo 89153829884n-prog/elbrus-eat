@@ -15,6 +15,28 @@
         .status-done { background: #95a5a6; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
         .history-empty { text-align: center; padding: 4rem; color: #95a5a6; }
         footer { background: #1a1a2e; }
+                /* ========== ИСТОРИЯ ЗАКАЗОВ — ПЕРЕНОС СТРОК ========== */
+        .order-card .tag {
+            white-space: normal !important;
+            height: auto !important;
+            word-break: break-word;
+            margin: 2px 4px 2px 0;
+        }
+        .order-card .column {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        @media screen and (max-width: 768px) {
+            .order-card .columns {
+                flex-direction: column;
+            }
+            .order-card .column {
+                margin-bottom: 8px;
+            }
+            .order-card .column:last-child {
+                margin-bottom: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -106,13 +128,28 @@
             const reversed = [...orders].reverse();
             reversed.forEach((order) => {
                 const statusClass = order.status === 'Оплачен' ? 'status-paid' : 'status-ready';
+                // Форматируем список блюд с переносом строк
+                let dishesHtml = '';
+                order.dishes.forEach((dish, index) => {
+                    dishesHtml += `<span class="tag is-small" style="margin:2px 4px 2px 0; white-space:normal; height:auto; word-break:break-word;">${dish}</span>`;
+                });
                 html += `
                     <div class="box order-card">
                         <div class="columns is-vcentered">
-                            <div class="column is-3"><strong>${order.name}</strong><br><span class="has-text-grey is-size-7">${order.date}</span></div>
-                            <div class="column is-4"><span class="tag is-medium">${order.dishes.join(', ')}</span><br><span class="has-text-grey is-size-7">${order.time ? 'К '+order.time : ''}</span></div>
-                            <div class="column is-2"><strong class="is-size-5">${order.total} ₽</strong></div>
-                            <div class="column is-2"><span class="${statusClass}">${order.status}</span></div>
+                            <div class="column is-3">
+                                <strong>${order.name}</strong><br>
+                                <span class="has-text-grey is-size-7">${order.date}</span>
+                            </div>
+                            <div class="column is-4" style="word-wrap:break-word; overflow-wrap:break-word; white-space:normal;">
+                                ${dishesHtml}
+                                ${order.time ? `<br><span class="has-text-grey is-size-7">⏱️ ${order.time}</span>` : ''}
+                            </div>
+                            <div class="column is-2">
+                                <strong class="is-size-5">${order.total} ₽</strong>
+                            </div>
+                            <div class="column is-2">
+                                <span class="${statusClass}">${order.status}</span>
+                            </div>
                         </div>
                         ${order.comment && order.comment !== '—' ? `<div class="has-text-grey is-size-7 mt-2">💬 ${order.comment}</div>` : ''}
                     </div>
