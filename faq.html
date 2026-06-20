@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | ElbrusEat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .faq-hero {
+            background: linear-gradient(135deg, #1a3a5c, #2d7d46);
+            background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .accordion-item {
+            border-bottom: 1px solid #eee;
+        }
+        .accordion-header {
+            cursor: pointer;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+        .accordion-header:hover {
+            background: #f0f0f0;
+        }
+        .accordion-content {
+            padding: 1.5rem;
+            display: none;
+        }
+        .accordion-content.is-active {
+            display: block;
+        }
+        footer {
+            background: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Хедер -->
+    <nav class="navbar is-fixed-top is-dark">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">
+                    🏔️ ElbrusEat
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="index.html">Главная</a>
+                    <a class="navbar-item" href="menu.html">Меню</a>
+                    <a class="navbar-item is-active" href="faq.html">FAQ</a>
+                    <a class="navbar-item" href="contacts.html">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой -->
+    <section class="hero is-medium faq-hero has-text-white">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-1 has-text-white">❓ Часто задаваемые вопросы</h1>
+                <p class="subtitle is-4 has-text-white">Всё, что вы хотели знать о заказе еды на Эльбрусе</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+
+                    <div class="accordion-item mb-4">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <h3 class="title is-5">
+                                <i class="fas fa-question-circle has-text-success mr-3"></i>
+                                Как сделать заказ?
+                            </h3>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="content">
+                                <p>1. Откройте <a href="menu.html">меню</a> и выберите блюда</p>
+                                <p>2. Нажмите «Заказать» и заполните форму</p>
+                                <p>3. Укажите время, когда вы планируете прийти</p>
+                                <p>4. Оплатите заказ онлайн — мы начнём готовить</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-4">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <h3 class="title is-5">
+                                <i class="fas fa-question-circle has-text-success mr-3"></i>
+                                Обязательна ли предоплата?
+                            </h3>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="content">
+                                <p><strong>Да, предоплата 100% обязательна.</strong></p>
+                                <p>Это гарантирует, что:</p>
+                                <ul>
+                                    <li>Ваш заказ точно будет приготовлен</li>
+                                    <li>Мы не готовим лишнюю еду (высота — ресурс ограничен)</li>
+                                    <li>Вы не ждёте, пока оплатите на месте (в горах часто нет связи для терминалов)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-4">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <h3 class="title is-5">
+                                <i class="fas fa-question-circle has-text-success mr-3"></i>
+                                Можно ли изменить или отменить заказ?
+                            </h3>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="content">
+                                <p><strong>Да, но с ограничениями:</strong></p>
+                                <ul>
+                                    <li>За 2 часа до указанного времени — полный возврат</li>
+                                    <li>Меньше чем за 2 часа — возврат 50% (продукты уже подготовлены)</li>
+                                    <li>После начала готовки — возврат невозможен</li>
+                                </ul>
+                                <p>Для изменения звоните нам: +7 (928) 777-39-00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-4">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <h3 class="title is-5">
+                                <i class="fas fa-question-circle has-text-success mr-3"></i>
+                                Что делать, если я опоздал?
+                            </h3>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="content">
+                                <p>Ничего страшного! Мы сохраняем ваш заказ в тепле до 30 минут.</p>
+                                <p>Если вы опаздываете больше — позвоните нам, и мы подогреем блюда.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-4">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <h3 class="title is-5">
+                                <i class="fas fa-question-circle has-text-success mr-3"></i>
+                                Есть ли доставка?
+                            </h3>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="content">
+                                <p>К сожалению, доставки нет — кафе находится на высоте 3900 м.</p>
+                                <p>Вы забираете заказ самостоятельно в кафе «Приют одиннадцати».</p>
+                                <p>Зато вы можете насладиться едой с видом на Эльбрус! 🏔️</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mb-4">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <h3 class="title is-5">
+                                <i class="fas fa-question-circle has-text-success mr-3"></i>
+                                Где посмотреть историю моих заказов?
+                            </h3>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="content">
+                                <p>История заказов доступна в вашем личном кабинете.</p>
+                                <p>Чтобы войти:</p>
+                                <ul>
+                                    <li>Нажмите на иконку профиля в правом верхнем углу</li>
+                                    <li>Используйте номер телефона, указанный при заказе</li>
+                                    <li>Вы увидите все свои заказы и можете повторить любой из них</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = content.classList.contains('is-active');
+            document.querySelectorAll('.accordion-content.is-active').forEach(item => {
+                item.classList.remove('is-active');
+            });
+            if (!isActive) {
+                content.classList.add('is-active');
+            }
+        }
+    </script>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-4 has-text-white">🏔️ ElbrusEat</h3>
+                    <p class="has-text-grey-light">Кафе на вершине Эльбруса</p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Навигация</h4>
+                    <p><a class="has-text-grey-light" href="index.html">Главная</a></p>
+                    <p><a class="has-text-grey-light" href="faq.html">FAQ</a></p>
+                    <p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Контакты</h4>
+                    <p class="has-text-grey-light">+7 (928) 777-39-00</p>
+                    <p class="has-text-grey-light">eat@elbrus.ru</p>
+                </div>
+            </div>
+            <p class="has-text-centered has-text-grey-light">© 2026 ElbrusEat</p>
+        </div>
+    </footer>
+
+</body>
+</html>

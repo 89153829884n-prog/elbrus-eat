@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElbrusEat — Заказ еды на вершине Эльбруса</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .hero-elbrus {
+            background: linear-gradient(135deg, #1a3a5c, #2d7d46);
+            background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-elbrus::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero-elbrus .container {
+            position: relative;
+            z-index: 1;
+        }
+        .card-service {
+            border-radius: 16px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .card-service:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #2d7d46;
+            color: white;
+            font-size: 28px;
+            margin: 0 auto 16px;
+        }
+        .price-tag {
+            background: #f1c40f;
+            color: #1a1a2e;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        footer {
+            background: #1a1a2e;
+        }
+        .snow-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- НАВИГАЦИЯ -->
+    <nav class="navbar is-fixed-top is-dark" role="navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">
+                    🏔️ ElbrusEat
+                </a>
+                <span class="navbar-burger" data-target="navMenu">
+                    <span></span><span></span><span></span>
+                </span>
+            </div>
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item is-active" href="index.html">Главная</a>
+                    <a class="navbar-item" href="menu.html">Меню</a>
+                    <a class="navbar-item" href="#about">О нас</a>
+                    <a class="navbar-item" href="faq.html">FAQ</a>
+                    <a class="navbar-item" href="contacts.html">Контакты</a>
+                    <a class="button is-success is-light" href="#order" style="margin: 8px 0;">
+                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                        <span>Заказать</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ГЕРОЙ-СЕКЦИЯ (ЭЛЬБРУС) -->
+    <section class="hero is-fullheight hero-elbrus">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="snow-icon" style="font-size:4rem; margin-bottom:1rem;">❄️</div>
+                <h1 class="title is-1 has-text-white" style="text-shadow: 0 2px 20px rgba(0,0,0,0.6);">
+                    Еда на высоте 3900 м
+                </h1>
+                <p class="subtitle is-3 has-text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                    Закажите горячий обед в кафе «Приют одиннадцати»
+                </p>
+                <p class="has-text-white is-size-5" style="max-width:600px; margin: 1rem auto; opacity:0.9;">
+                    💳 Предоплата онлайн • 📜 История заказов • ⏱️ Готовность к вашему приходу
+                </p>
+                <div class="buttons is-centered" style="margin-top:2rem;">
+                    <a href="menu.html" class="button is-success is-large">
+                        <span class="icon"><i class="fas fa-utensils"></i></span>
+                        <span>Смотреть меню</span>
+                    </a>
+                    <a href="#order" class="button is-light is-large">
+                        <span class="icon"><i class="fas fa-credit-card"></i></span>
+                        <span>Заказать с предоплатой</span>
+                    </a>
+                </div>
+                <div style="margin-top:2rem;">
+                    <span class="tag is-light is-medium">🚀 Работаем с 8:00 до 20:00</span>
+                    <span class="tag is-success is-medium" style="margin-left:8px;">📶 Стабильная связь даже в горах</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О НАС -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered">Почему выбирают ElbrusEat?</h2>
+            <div class="columns is-centered" style="margin-top:2rem;">
+                <div class="column is-4 has-text-centered">
+                    <div class="feature-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="title is-5">Кафе на вершине</h3>
+                    <p>Единственное кафе на южном склоне Эльбруса с горячими блюдами и видом на горы.</p>
+                </div>
+                <div class="column is-4 has-text-centered">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="title is-5">Предоплата онлайн</h3>
+                    <p>Оплатите заказ картой заранее — мы приготовим его точно к вашему приходу.</p>
+                </div>
+                <div class="column is-4 has-text-centered">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="title is-5">История заказов</h3>
+                    <p>Все ваши заказы сохраняются — повторите любимое блюдо в один клик.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОПУЛЯРНЫЕ БЛЮДА (ПРЕВЬЮ) -->
+    <section class="section has-background-light">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered">🔥 Популярные блюда</h2>
+            <div class="columns">
+                <div class="column is-4">
+                    <div class="card card-service">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Хачапури" alt="Хачапури">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Хачапури по-аджарски</h3>
+                            <p class="has-text-grey">Сытый, ароматный, с яйцом — согревает после подъёма.</p>
+                            <p><span class="price-tag">890 ₽</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card card-service">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Борщ" alt="Борщ">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Борщ с пампушками</h3>
+                            <p class="has-text-grey">Классика русской кухни. Горячий, наваристый.</p>
+                            <p><span class="price-tag">750 ₽</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card card-service">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Чай" alt="Горный чай">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Горный чай с травами</h3>
+                            <p class="has-text-grey">Облепиха, имбирь, мёд — идеальный напиток после снега.</p>
+                            <p><span class="price-tag">350 ₽</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="has-text-centered">
+                <a href="menu.html" class="button is-success is-medium">Полное меню →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФОРМА ЗАКАЗА (УПРОЩЁННАЯ) -->
+    <section id="order" class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-6">
+                    <div class="box">
+                        <h2 class="title is-3 has-text-centered">📋 Оформить заказ</h2>
+                        <p class="has-text-centered has-text-grey">Выберите блюда из меню, и мы приготовим их к вашему приходу.</p>
+                        <form id="orderForm">
+                            <div class="field">
+                                <label class="label">Ваше имя <span class="has-text-danger">*</span></label>
+                                <div class="control has-icons-left">
+                                    <input class="input" type="text" id="orderName" placeholder="Иван Петров">
+                                    <span class="icon is-small is-left"><i class="fas fa-user"></i></span>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Телефон <span class="has-text-danger">*</span></label>
+                                <div class="control has-icons-left">
+                                    <input class="input" type="tel" id="orderPhone" placeholder="+7 (999) 123-45-67">
+                                    <span class="icon is-small is-left"><i class="fas fa-phone"></i></span>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Время получения <span class="has-text-danger">*</span></label>
+                                <div class="control has-icons-left">
+                                    <input class="input" type="datetime-local" id="orderTime">
+                                    <span class="icon is-small is-left"><i class="fas fa-clock"></i></span>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Выберите блюда</label>
+                                <div class="control">
+                                    <label class="checkbox"><input type="checkbox" value="Хачапури"> Хачапури (890 ₽)</label><br>
+                                    <label class="checkbox"><input type="checkbox" value="Борщ"> Борщ (750 ₽)</label><br>
+                                    <label class="checkbox"><input type="checkbox" value="Горный чай"> Горный чай (350 ₽)</label><br>
+                                    <label class="checkbox"><input type="checkbox" value="Плов"> Плов (1020 ₽)</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Комментарий к заказу</label>
+                                <div class="control">
+                                    <textarea class="textarea" id="orderComment" placeholder="Например: без лука, добавьте лимон..."></textarea>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <label class="checkbox">
+                                        <input type="checkbox" id="orderAgreement">
+                                        Я согласен на обработку данных и условия предоплаты <span class="has-text-danger">*</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-success is-fullwidth is-medium" type="submit">
+                                        <span class="icon"><i class="fas fa-credit-card"></i></span>
+                                        <span>Перейти к оплате (предоплата 100%)</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="has-text-grey is-size-7 has-text-centered">🔒 Все платежи защищены. Оплата через защищённый шлюз.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-4 has-text-white">🏔️ ElbrusEat</h3>
+                    <p class="has-text-grey-light">Кафе на южном склоне Эльбруса, высота 3900 м.</p>
+                    <p class="has-text-grey-light">Работаем ежедневно с 8:00 до 20:00.</p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Навигация</h4>
+                    <p><a class="has-text-grey-light" href="index.html">Главная</a></p>
+                    <p><a class="has-text-grey-light" href="menu.html">Меню</a></p>
+                    <p><a class="has-text-grey-light" href="faq.html">FAQ</a></p>
+                    <p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Контакты</h4>
+                    <p class="has-text-grey-light"><i class="fas fa-phone"></i> +7 (928) 777-39-00</p>
+                    <p class="has-text-grey-light"><i class="fas fa-envelope"></i> eat@elbrus.ru</p>
+                    <p class="has-text-grey-light"><i class="fas fa-map-marker-alt"></i> Эльбрус, южный склон</p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Мы в соцсетях</h4>
+                    <a class="has-text-grey-light" href="#"><i class="fab fa-vk"></i> ВКонтакте</a><br>
+                    <a class="has-text-grey-light" href="#"><i class="fab fa-telegram"></i> Telegram</a><br>
+                    <a class="has-text-grey-light" href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                </div>
+            </div>
+            <hr style="border-color:#333;">
+            <p class="has-text-centered has-text-grey-light">© 2026 ElbrusEat. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Бургер-меню для мобильных
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.getElementById('navMenu');
+            if (burger && menu) {
+                burger.addEventListener('click', () => {
+                    burger.classList.toggle('is-active');
+                    menu.classList.toggle('is-active');
+                });
+            }
+        });
+
+        // Обработка формы заказа
+        document.getElementById('orderForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('orderName').value.trim();
+            if (!name) {
+                alert('Пожалуйста, введите ваше имя');
+                return;
+            }
+            const checked = document.querySelectorAll('#orderForm input[type="checkbox"]:checked');
+            if (checked.length === 0) {
+                alert('Выберите хотя бы одно блюдо');
+                return;
+            }
+            alert('✅ Заказ принят! Вы будете перенаправлены на страницу оплаты.');
+        });
+    </script>
+
+</body>
+</html>

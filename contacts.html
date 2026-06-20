@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | ElbrusEat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .hero-contact {
+            background: linear-gradient(135deg, #1a3a5c, #2d7d46);
+            background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .map-container {
+            height: 300px;
+            background: #1a3a5c;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+        .contact-card {
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+        .contact-card:hover {
+            transform: translateY(-4px);
+        }
+        footer {
+            background: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Хедер -->
+    <nav class="navbar is-fixed-top is-dark">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">
+                    🏔️ ElbrusEat
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="index.html">Главная</a>
+                    <a class="navbar-item" href="menu.html">Меню</a>
+                    <a class="navbar-item" href="faq.html">FAQ</a>
+                    <a class="navbar-item is-active" href="contacts.html">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой -->
+    <section class="hero is-medium hero-contact has-text-white">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-1 has-text-white">📞 Свяжитесь с нами</h1>
+                <p class="subtitle is-4 has-text-white">Мы на высоте 3900 м, но всегда на связи</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-6">
+                    <h2 class="title is-3">Наши контакты</h2>
+                    <div class="box contact-card">
+                        <article class="media">
+                            <div class="media-left">
+                                <span class="icon has-text-success"><i class="fas fa-map-marker-alt fa-2x"></i></span>
+                            </div>
+                            <div class="media-content">
+                                <p><strong>📍 Адрес:</strong><br>Кафе «Приют одиннадцати»<br>Эльбрус, южный склон, высота 3900 м</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="box contact-card">
+                        <article class="media">
+                            <div class="media-left">
+                                <span class="icon has-text-success"><i class="fas fa-phone fa-2x"></i></span>
+                            </div>
+                            <div class="media-content">
+                                <p><strong>📞 Телефон:</strong><br>+7 (928) 777-39-00</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="box contact-card">
+                        <article class="media">
+                            <div class="media-left">
+                                <span class="icon has-text-success"><i class="fas fa-envelope fa-2x"></i></span>
+                            </div>
+                            <div class="media-content">
+                                <p><strong>📧 Email:</strong><br>eat@elbrus.ru</p>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="box contact-card">
+                        <article class="media">
+                            <div class="media-left">
+                                <span class="icon has-text-success"><i class="fas fa-clock fa-2x"></i></span>
+                            </div>
+                            <div class="media-content">
+                                <p><strong>🕐 Часы работы:</strong><br>Ежедневно с 8:00 до 20:00</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <h3 class="title is-3">Как нас найти</h3>
+                    <div class="map-container">
+                        <div>
+                            <i class="fas fa-mountain fa-4x" style="display:block; margin-bottom:1rem; opacity:0.6;"></i>
+                            <p><strong>🗺️ Южный склон Эльбруса</strong></p>
+                            <p class="has-text-grey-light">Кафе расположено на высоте 3900 м</p>
+                            <p class="has-text-grey-light">Добраться можно на канатной дороге до станции «Мир»</p>
+                        </div>
+                    </div>
+                    <div class="notification is-success is-light mt-4">
+                        <p><strong>💡 Подсказка:</strong> Если вы поднимаетесь на склон, закажите еду заранее через наш сайт — мы приготовим её к вашему приходу!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-4 has-text-white">🏔️ ElbrusEat</h3>
+                    <p class="has-text-grey-light">Кафе на вершине Эльбруса</p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Навигация</h4>
+                    <p><a class="has-text-grey-light" href="index.html">Главная</a></p>
+                    <p><a class="has-text-grey-light" href="faq.html">FAQ</a></p>
+                    <p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Контакты</h4>
+                    <p class="has-text-grey-light">+7 (928) 777-39-00</p>
+                    <p class="has-text-grey-light">eat@elbrus.ru</p>
+                </div>
+            </div>
+            <p class="has-text-centered has-text-grey-light">© 2026 ElbrusEat</p>
+        </div>
+    </footer>
+
+</body>
+</html>

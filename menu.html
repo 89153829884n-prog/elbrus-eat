@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню | ElbrusEat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .menu-hero {
+            background: linear-gradient(135deg, #1a3a5c, #2d7d46);
+            background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .menu-card {
+            border-radius: 12px;
+            transition: transform 0.2s;
+            height: 100%;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+        .category-tag {
+            background: #2d7d46;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        footer {
+            background: #1a1a2e;
+        }
+        .price-badge {
+            background: #f1c40f;
+            color: #1a1a2e;
+            font-weight: bold;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+        .cart-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Хедер -->
+    <nav class="navbar is-fixed-top is-dark">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">
+                    🏔️ ElbrusEat
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="index.html">Главная</a>
+                    <a class="navbar-item is-active" href="menu.html">Меню</a>
+                    <a class="navbar-item" href="faq.html">FAQ</a>
+                    <a class="navbar-item" href="contacts.html">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой -->
+    <section class="hero is-medium menu-hero has-text-white">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-1 has-text-white">🍽️ Наше меню</h1>
+                <p class="subtitle is-4 has-text-white">Горячие блюда, согревающие напитки и десерты на высоте 3900 м</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Меню -->
+    <section class="section">
+        <div class="container">
+
+            <!-- Категория: Супы -->
+            <h2 class="title is-3">🥣 Супы</h2>
+            <div class="columns">
+                <div class="column is-4">
+                    <div class="card menu-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Борщ" alt="Борщ">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Борщ с пампушками</h3>
+                            <p class="has-text-grey">Наваристый, со сметаной и чесночными пампушками</p>
+                            <p><span class="price-badge">750 ₽</span></p>
+                            <button class="button is-success is-small mt-2">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card menu-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Солянка" alt="Солянка">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Солянка мясная</h3>
+                            <p class="has-text-grey">Густой суп с говядиной, колбасками и оливками</p>
+                            <p><span class="price-badge">820 ₽</span></p>
+                            <button class="button is-success is-small mt-2">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card menu-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Харчо" alt="Харчо">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Харчо</h3>
+                            <p class="has-text-grey">Острый суп с говядиной, рисом и грецкими орехами</p>
+                            <p><span class="price-badge">790 ₽</span></p>
+                            <button class="button is-success is-small mt-2">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Категория: Горячие блюда -->
+            <h2 class="title is-3 mt-6">🍳 Горячие блюда</h2>
+            <div class="columns">
+                <div class="column is-4">
+                    <div class="card menu-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Хачапури" alt="Хачапури">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Хачапури по-аджарски</h3>
+                            <p class="has-text-grey">Сытная лепёшка с сыром и яйцом</p>
+                            <p><span class="price-badge">890 ₽</span></p>
+                            <button class="button is-success is-small mt-2">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card menu-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Плов" alt="Плов">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Плов с бараниной</h3>
+                            <p class="has-text-grey">Рассыпчатый рис, кусочки баранины, морковь, специи</p>
+                            <p><span class="price-badge">1020 ₽</span></p>
+                            <button class="button is-success is-small mt-2">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card menu-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Пельмени" alt="Пельмени">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Пельмени сибирские</h3>
+                            <p class="has-text-grey">Домашние пельмени со сметаной и зеленью</p>
+                            <p><span class="price-badge">680 ₽</span></p>
+                            <button class="button is-success is-small mt-2">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Категория: Напитки -->
+            <h2 class="title is-3 mt-6">☕ Напитки</h2>
+            <div class="columns">
+                <div class="column is-4">
+                    <div class="card menu-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Горный+чай" alt="Горный чай">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Горный чай с травами</h3>
+                            <p class="has-text-grey">Облепиха, имбирь, мёд, лимон</p>
+                            <p><span class="price-badge">350 ₽</span></p>
+                            <button class="button is-success is-small mt-2">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card menu-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Кофе" alt="Кофе">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Эспрессо</h3>
+                            <p class="has-text-grey">Классический итальянский кофе</p>
+                            <p><span class="price-badge">280 ₽</span></p>
+                            <button class="button is-success is-small mt-2">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="card menu-card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Какао" alt="Какао">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="title is-5">Горячее какао</h3>
+                            <p class="has-text-grey">С молоком, зефиром и корицей</p>
+                            <p><span class="price-badge">390 ₽</span></p>
+                            <button class="button is-success is-small mt-2">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="has-text-centered mt-6">
+                <a href="#order" class="button is-success is-large">
+                    <span class="icon"><i class="fas fa-credit-card"></i></span>
+                    <span>Перейти к оформлению заказа</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Кнопка корзины (плавающая) -->
+    <div class="cart-btn">
+        <button class="button is-primary is-large">
+            <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+            <span>Корзина <span class="tag is-light">0</span></span>
+        </button>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-4 has-text-white">🏔️ ElbrusEat</h3>
+                    <p class="has-text-grey-light">Кафе на вершине Эльбруса</p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Навигация</h4>
+                    <p><a class="has-text-grey-light" href="index.html">Главная</a></p>
+                    <p><a class="has-text-grey-light" href="menu.html">Меню</a></p>
+                    <p><a class="has-text-grey-light" href="faq.html">FAQ</a></p>
+                    <p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p>
+                </div>
+                <div class="column">
+                    <h4 class="title is-5 has-text-white">Контакты</h4>
+                    <p class="has-text-grey-light">+7 (928) 777-39-00</p>
+                    <p class="has-text-grey-light">eat@elbrus.ru</p>
+                </div>
+            </div>
+            <p class="has-text-centered has-text-grey-light">© 2026 ElbrusEat</p>
+        </div>
+    </footer>
+
+    <script>
+        // Простой счётчик корзины
+        let cartCount = 0;
+        document.querySelectorAll('.menu-card .button.is-success.is-small').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                cartCount++;
+                document.querySelector('.cart-btn .tag').textContent = cartCount;
+                this.textContent = '✅ Добавлено';
+                this.classList.add('is-static');
+                setTimeout(() => {
+                    this.textContent = 'В корзину';
+                    this.classList.remove('is-static');
+                }, 2000);
+            });
+        });
+    </script>
+
+</body>
+</html>

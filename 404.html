@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена | HealthyFood</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            color: #E74C3C;
+            line-height: 1;
+        }
+
+        .error-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Простая навигация на странице 404 -->
+    <nav class="navbar is-light">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="index.html">
+                    <strong>🥗 HealthyFood</strong>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section error-page">
+        <div class="container has-text-centered">
+            <!-- Эмодзи и код ошибки -->
+            <div class="error-emoji">😕</div>
+            <h1 class="error-code">404</h1>
+
+            <!-- Заголовок -->
+            <h2 class="title is-2">Страница не найдена</h2>
+            <p class="subtitle is-5 mb-6">
+                Извините, но страница, которую вы ищете, не существует или была перемещена.
+            </p>
+
+            <!-- Поиск (заглушка) -->
+            <div class="search-box">
+                <div class="field has-addons">
+                    <div class="control is-expanded">
+                        <input class="input is-medium" type="text" placeholder="Попробуйте найти что-то другое...">
+                    </div>
+                    <div class="control">
+                        <button class="button is-primary is-medium">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кнопки действий -->
+            <div class="buttons is-centered mt-6">
+                <a href="index.html" class="button is-primary is-large">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span>На главную</span>
+                </a>
+                <a href="contacts.html" class="button is-light is-large">
+                    <span class="icon"><i class="fas fa-headset"></i></span>
+                    <span>Связаться с поддержкой</span>
+                </a>
+            </div>
+
+            <!-- Полезные ссылки -->
+            <div class="mt-6">
+                <p class="has-text-grey mb-3">Возможно, вы искали:</p>
+                <div class="buttons are-small is-centered">
+                    <a href="index.html" class="button is-light">Главная</a>
+                    <a href="faq.html" class="button is-light">Частые вопросы (FAQ)</a>
+                    <a href="contacts.html" class="button is-light">Контакты</a>
+                    <a href="#services" class="button is-light">Наши услуги</a>
+                </div>
+            </div>
+
+            <!-- Информация -->
+            <div class="notification is-light mt-6" style="max-width: 600px; margin: 0 auto;">
+                <p><strong>Подсказка:</strong> Если вы уверены, что страница должна существовать, пожалуйста:</p>
+                <p>1. Проверьте правильность URL-адреса</p>
+                <p>2. Воспользуйтесь поиском выше</p>
+                <p>3. Свяжитесь с нашей поддержкой по телефону: <strong>+7 (999) 123-45-67</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Простой футер -->
+    <footer class="footer has-background-dark has-text-white">
+        <div class="container has-text-centered">
+            <p>© 2025 HealthyFood. Доставка здорового питания.</p>
+            <p class="mt-2">
+                <a class="has-text-white mr-4" href="index.html">Главная</a>
+                <a class="has-text-white mr-4" href="faq.html">FAQ</a>
+                <a class="has-text-white" href="contacts.html">Контакты</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
