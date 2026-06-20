@@ -157,6 +157,23 @@
                 padding: 2rem 1rem;
             }
         }
+
+        /* ========== АНИМАЦИЯ ДЛЯ ТОПА ========== */
+        .top-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #f1c40f;
+            color: #1a1a2e;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+        .card-service {
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -311,54 +328,18 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- ПОПУЛЯРНЫЕ БЛЮДА -->
+    <!-- ПОПУЛЯРНЫЕ БЛЮДА (АЛГОРИТМ НА JS) -->
     <!-- ============================================================ -->
     <section class="section has-background-light">
         <div class="container">
             <h2 class="title is-2 has-text-centered" style="color:#1a1a2e; font-weight:800;">🔥 Самые популярные блюда</h2>
-            <p class="has-text-centered has-text-grey mb-5">Приготовлены на профессиональной кухне из продуктов длительного хранения</p>
-            <div class="columns">
-                <!-- Солянка -->
-                <div class="column is-4">
-                    <div class="card card-service">
-                        <div class="card-image">
-                            <figure class="image"><img src="images/солянка сборная мясная фото.jpg" alt="Солянка"></figure>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="title is-5">Солянка сборная мясная</h3>
-                            <p class="has-text-grey is-size-7">Говядина тушёная, ветчина, огурцы, оливки</p>
-                            <p class="can-icon"><i class="fas fa-can-food"></i> Все ингредиенты из консервов</p>
-                            <p><span class="price-tag">890 ₽</span></p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Гуляш -->
-                <div class="column is-4">
-                    <div class="card card-service">
-                        <div class="card-image">
-                            <figure class="image"><img src="images/гуляш по-венгерски фото.jpg" alt="Гуляш"></figure>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="title is-5">Гуляш по-венгерски</h3>
-                            <p class="has-text-grey is-size-7">Говядина тушёная, паприка, томат, картофель</p>
-                            <p class="can-icon"><i class="fas fa-can-food"></i> Мясо — тушёнка премиум-класса</p>
-                            <p><span class="price-tag">920 ₽</span></p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Плов -->
-                <div class="column is-4">
-                    <div class="card card-service">
-                        <div class="card-image">
-                            <figure class="image"><img src="images/плов с бараниной фото.jpg" alt="Плов"></figure>
-                        </div>
-                        <div class="card-content">
-                            <h3 class="title is-5">Плов с бараниной</h3>
-                            <p class="has-text-grey is-size-7">Баранина тушёная, рис, морковь, зира, барбарис</p>
-                            <p class="can-icon"><i class="fas fa-can-food"></i> Баранина — высококачественная тушёнка</p>
-                            <p><span class="price-tag">1020 ₽</span></p>
-                        </div>
-                    </div>
+            <p class="has-text-centered has-text-grey mb-5">
+                <span id="topStatsText">На основе заказов всех пользователей</span>
+            </p>
+            <div id="topDishesContainer" class="columns">
+                <!-- Сюда динамически вставляются топ-3 блюда через JS -->
+                <div class="column is-12 has-text-centered">
+                    <p class="has-text-grey">Загрузка...</p>
                 </div>
             </div>
             <div class="has-text-centered">
@@ -468,7 +449,6 @@
                     menu.classList.toggle('is-active');
                 });
             }
-            // Если пользователь уже есть — показываем
             const saved = localStorage.getItem('elbrusUser');
             if (saved) {
                 currentUser = saved;
@@ -476,6 +456,7 @@
             } else {
                 updateUI();
             }
+            renderTopDishes();
         });
 
         // ========================================================
@@ -512,6 +493,159 @@
             localStorage.setItem('elbrusOrders_' + currentUser, JSON.stringify(orders));
         }
 
+        // ========================================================
+        // ПОЛУЧИТЬ ВСЕ ЗАКАЗЫ ВСЕХ ПОЛЬЗОВАТЕЛЕЙ
+        // ========================================================
+        function getAllUsersOrders() {
+            const allOrders = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith('elbrusOrders_')) {
+                    try {
+                        const orders = JSON.parse(localStorage.getItem(key));
+                        if (Array.isArray(orders)) {
+                            orders.forEach(order => {
+                                if (order.dishes && Array.isArray(order.dishes)) {
+                                    allOrders.push(order);
+                                }
+                            });
+                        }
+                    } catch (e) {}
+                }
+            }
+            return allOrders;
+        }
+
+        // ========================================================
+        // АЛГОРИТМ ТОП-3 БЛЮД
+        // ========================================================
+        function getTopDishes() {
+            const allOrders = getAllUsersOrders();
+            
+            // Дефолтное меню (если заказов нет)
+            const defaultDishes = [
+                { name: 'Солянка сборная мясная', price: 890, image: 'солянка сборная мясная фото.jpg', desc: 'Говядина тушёная, ветчина, огурцы, оливки' },
+                { name: 'Гуляш по-венгерски', price: 920, image: 'гуляш по-венгерски фото.jpg', desc: 'Говядина тушёная, паприка, томат, картофель' },
+                { name: 'Плов с бараниной', price: 1020, image: 'плов с бараниной фото.jpg', desc: 'Баранина тушёная, рис, морковь, зира, барбарис' }
+            ];
+
+            if (allOrders.length === 0) {
+                return { top: defaultDishes, totalOrders: 0 };
+            }
+
+            // Считаем частоту каждого блюда
+            const dishCount = {};
+            allOrders.forEach(order => {
+                if (order.dishes && Array.isArray(order.dishes)) {
+                    order.dishes.forEach(dishStr => {
+                        // Из строки "Название (X шт)" или просто "Название"
+                        let dishName = dishStr;
+                        const match = dishStr.match(/^(.+?)\s*\(/);
+                        if (match) {
+                            dishName = match[1].trim();
+                        } else {
+                            dishName = dishStr.trim();
+                        }
+                        if (dishName) {
+                            dishCount[dishName] = (dishCount[dishName] || 0) + 1;
+                        }
+                    });
+                }
+            });
+
+            // Сортируем по частоте
+            const sorted = Object.entries(dishCount).sort((a, b) => b[1] - a[1]);
+            const topNames = sorted.slice(0, 3).map(item => item[0]);
+
+            // Маппинг названий на полные данные
+            const dishMap = {
+                'Солянка сборная мясная': { price: 890, image: 'солянка сборная мясная фото.jpg', desc: 'Говядина тушёная, ветчина, огурцы, оливки' },
+                'Борщ с говядиной': { price: 820, image: 'борщ с говядиной фото.jpg', desc: 'Говядина тушёная, свёкла, капуста, картофель' },
+                'Харчо': { price: 790, image: 'харчо фото.jpg', desc: 'Говядина тушёная, рис, грецкие орехи, тклапи' },
+                'Чечевичный суп с копчёностями': { price: 650, image: 'чечевичный суп с копчёностями фото.jpg', desc: 'Чечевица, копчёная колбаса, картофель' },
+                'Сырный суп с грибами': { price: 700, image: 'сырный суп с грибами фото.jpg', desc: 'Сыр плавленый, шампиньоны, картофель, сливки' },
+                'Суп-пюре из тыквы': { price: 680, image: 'суп-пюре из тыквы фото.jpg', desc: 'Тыква, сливки, имбирь, мускатный орех' },
+                'Гуляш по-венгерски': { price: 920, image: 'гуляш по-венгерски фото.jpg', desc: 'Говядина тушёная, паприка, томат, картофель' },
+                'Плов с бараниной': { price: 1020, image: 'плов с бараниной фото.jpg', desc: 'Баранина тушёная, рис, морковь, зира, барбарис' },
+                'Каша гречневая с мясом': { price: 680, image: 'каша гречневая с мясом фото.jpg', desc: 'Гречка, говядина тушёная, лук, морковь' },
+                'Рис с овощами и мясом': { price: 720, image: 'рис с овощами и мясом фото.jpg', desc: 'Рис, говядина, кукуруза, горошек, перец' },
+                'Макароны с тушёнкой': { price: 590, image: 'макароны с тушёнкой фото.jpg', desc: 'Макароны, говядина тушёная, лук, томат' },
+                'Картофельное пюре с котлетой': { price: 750, image: 'картофельное пюре с котлетой фото.jpg', desc: 'Пюре, котлета из тушёнки' },
+                'Горный чай': { price: 350, image: 'горный чай фото.jpg', desc: 'Облепиха, имбирь, мёд, лимон' },
+                'Чай чёрный с лимоном': { price: 250, image: 'чай чёрный с лимоном фото.jpg', desc: 'Чёрный чай, лимон' },
+                'Кофе американо': { price: 280, image: 'кофе американо фото.jpg', desc: 'Эспрессо + горячая вода' },
+                'Какао с молоком': { price: 390, image: 'какао с молоком фото.jpg', desc: 'Какао, сгущёнка, корица' },
+                'Морс клюквенный': { price: 300, image: 'морс клюквенный фото.jpg', desc: 'Клюква, сахар, вода' },
+                'Сбитень': { price: 420, image: 'сбитень фото.jpg', desc: 'Мёд, имбирь, пряности, вода' }
+            };
+
+            let topDishes = [];
+            if (topNames.length === 0) {
+                topDishes = defaultDishes;
+            } else {
+                topNames.forEach(name => {
+                    const data = dishMap[name];
+                    if (data) {
+                        topDishes.push({ name, ...data });
+                    }
+                });
+                // Если не хватает до 3, добавляем из дефолта
+                const usedNames = topDishes.map(d => d.name);
+                defaultDishes.forEach(d => {
+                    if (topDishes.length < 3 && !usedNames.includes(d.name)) {
+                        topDishes.push(d);
+                    }
+                });
+            }
+
+            return { top: topDishes, totalOrders: allOrders.length };
+        }
+
+        // ========================================================
+        // ОТРИСОВКА ТОП-3 БЛЮД
+        // ========================================================
+        function renderTopDishes() {
+            const container = document.getElementById('topDishesContainer');
+            const statsText = document.getElementById('topStatsText');
+            const result = getTopDishes();
+            const topDishes = result.top;
+            const totalOrders = result.totalOrders;
+
+            if (totalOrders === 0) {
+                statsText.textContent = 'Пока нет заказов. Вот наши фирменные блюда!';
+            } else {
+                statsText.textContent = `На основе ${totalOrders} заказов от всех пользователей`;
+            }
+
+            let html = '';
+            topDishes.forEach((dish, index) => {
+                const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉';
+                html += `
+                    <div class="column is-4">
+                        <div class="card card-service">
+                            <div class="card-image" style="position:relative;">
+                                <span class="top-badge">${medal} #${index + 1}</span>
+                                <figure class="image">
+                                    <img src="images/${dish.image}" alt="${dish.name}" onerror="this.src='https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=${encodeURIComponent(dish.name)}'">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="title is-5">${dish.name}</h3>
+                                <p class="has-text-grey is-size-7">${dish.desc}</p>
+                                <p class="can-icon"><i class="fas fa-can-food"></i> Все ингредиенты из консервов</p>
+                                <p><span class="price-tag">${dish.price} ₽</span></p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ========================================================
+        // ОБНОВЛЕНИЕ UI
+        // ========================================================
         function updateUI() {
             const display = document.getElementById('currentUserDisplay');
             const codeSpan = document.getElementById('currentUserCode');
@@ -537,6 +671,7 @@
             document.getElementById('newCodeDisplay').style.display = 'block';
             saveUser(code);
             alert('✅ Ваш код: ' + code + '. Сохраните его!');
+            renderTopDishes();
         });
 
         // Копирование кода
@@ -562,6 +697,7 @@
                 document.getElementById('loginError').style.display = 'none';
                 document.getElementById('loginCode').value = '';
                 alert('✅ Вход выполнен! Добро пожаловать, ' + input);
+                renderTopDishes();
             } else {
                 document.getElementById('loginError').style.display = 'block';
             }
@@ -576,7 +712,7 @@
         });
 
         // ========================================================
-        // ИСТОРИЯ ЗАКАЗОВ
+        // ИСТОРИЯ ЗАКАЗОВ (ПРЕВЬЮ)
         // ========================================================
         function loadOrderPreview() {
             const container = document.getElementById('orderHistoryPreview');
@@ -637,9 +773,23 @@
             if (confirm('Вы уверены, что хотите очистить ВСЮ историю заказов?')) {
                 saveOrders([]);
                 loadOrderPreview();
+                renderTopDishes();
                 alert('✅ История очищена');
             }
         });
+
+        // ========================================================
+        // ПЕРЕРИСОВКА ТОПА ПРИ ИЗМЕНЕНИИ КОРЗИНЫ
+        // ========================================================
+        // Слушаем событие изменения заказов (из menu.html)
+        document.addEventListener('orderCreated', function() {
+            renderTopDishes();
+        });
+
+        // Перерисовка каждые 10 секунд (на случай, если другой пользователь сделал заказ)
+        setInterval(function() {
+            renderTopDishes();
+        }, 10000);
     </script>
 
 </body>
