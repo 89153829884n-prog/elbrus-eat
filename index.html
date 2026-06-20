@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
+        /* ========== ГЛАВНЫЙ ЭКРАН ========== */
         .hero-elbrus {
             background: linear-gradient(135deg, #1a3a5c, #2d7d46);
             background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=600&fit=crop');
@@ -20,37 +21,158 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.55);
         }
-        .hero-elbrus .container { position: relative; z-index: 1; }
-        .feature-icon {
-            width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; background: #2d7d46; color: white; font-size: 28px; margin: 0 auto 16px;
+        .hero-elbrus .container {
+            position: relative;
+            z-index: 1;
         }
-        .price-tag { background: #f1c40f; color: #1a1a2e; padding: 4px 12px; border-radius: 20px; font-weight: bold; }
-        .can-icon { color: #7f8c8d; font-size: 0.75rem; }
-        footer { background: #1a1a2e; }
-        .snow-icon { animation: float 3s ease-in-out infinite; }
-        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-        .order-card { border-left: 4px solid #2d7d46; border-radius: 8px; margin-bottom: 1rem; }
-        .order-card .order-status { font-weight: bold; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
+        .snow-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ========== ОБЩИЕ КАРТОЧКИ ========== */
+        .card-service {
+            border-radius: 16px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            height: 100%;
+        }
+        .card-service:hover {
+            transform: translateY(-5px);
+        }
+        .card-service .card-image {
+            overflow: hidden;
+            border-radius: 16px 16px 0 0;
+        }
+        .card-service .card-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .card-service .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #2d7d46;
+            color: white;
+            font-size: 28px;
+            margin: 0 auto 16px;
+        }
+
+        .price-tag {
+            background: #f1c40f;
+            color: #1a1a2e;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .can-icon {
+            color: #7f8c8d;
+            font-size: 0.75rem;
+        }
+
+        /* ========== ИСТОРИЯ ЗАКАЗОВ ========== */
+        .order-card {
+            border-left: 4px solid #2d7d46;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .order-card .order-status {
+            font-weight: bold;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
         .status-paid { background: #2ecc71; color: white; }
         .status-ready { background: #f39c12; color: white; }
         .status-done { background: #95a5a6; color: white; }
-        .history-empty { text-align: center; padding: 3rem; color: #95a5a6; }
-        .cta-section { background: linear-gradient(135deg, #1a3a5c, #2d7d46); border-radius: 16px; padding: 3rem 2rem; }
-        .code-box { background: #f8f9fa; border-radius: 12px; padding: 2rem; max-width: 500px; margin: 0 auto; }
-        .code-display { font-size: 2.5rem; font-weight: 900; letter-spacing: 8px; background: #1a1a2e; color: #2ecc71; padding: 0.5rem 1.5rem; border-radius: 12px; display: inline-block; font-family: monospace; }
-        .section-title { color: #1a1a2e; font-weight: 700; }
-        .section-title-light { color: #2d7d46; }
+        .history-empty {
+            text-align: center;
+            padding: 3rem;
+            color: #95a5a6;
+        }
+
+        /* ========== СИСТЕМА КОДОВ ========== */
+        .code-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .code-display {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            background: #1a1a2e;
+            color: #2ecc71;
+            padding: 0.5rem 1.5rem;
+            border-radius: 12px;
+            display: inline-block;
+            font-family: monospace;
+        }
+
+        /* ========== CTA ========== */
+        .cta-section {
+            background: linear-gradient(135deg, #1a3a5c, #2d7d46);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+        }
+
+        /* ========== ФУТЕР ========== */
+        footer {
+            background: #1a1a2e;
+        }
+        footer a {
+            color: #b0b0b0;
+        }
+        footer a:hover {
+            color: white;
+        }
+
+        /* ========== МОБИЛЬНЫЕ ========== */
+        @media screen and (max-width: 768px) {
+            .card-service .card-image img {
+                height: 160px;
+            }
+            .code-display {
+                font-size: 1.8rem;
+                letter-spacing: 4px;
+            }
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- ============================================================ -->
     <!-- НАВИГАЦИЯ -->
+    <!-- ============================================================ -->
     <nav class="navbar is-fixed-top is-dark" role="navigation">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">🏔️ ElbrusEat</a>
-                <span class="navbar-burger" data-target="navMenu"><span></span><span></span><span></span></span>
+                <a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">
+                    🏔️ ElbrusEat
+                </a>
+                <span class="navbar-burger" data-target="navMenu">
+                    <span></span><span></span><span></span>
+                </span>
             </div>
             <div id="navMenu" class="navbar-menu">
                 <div class="navbar-end">
@@ -59,23 +181,40 @@
                     <a class="navbar-item" href="about.html">О нас</a>
                     <a class="navbar-item" href="faq.html">FAQ</a>
                     <a class="navbar-item" href="contacts.html">Контакты</a>
-                    <a class="navbar-item" href="orders.html"><span class="icon"><i class="fas fa-history"></i></span><span>История</span></a>
-                    <a class="button is-success is-light" href="menu.html" style="margin:8px 0;"><span class="icon"><i class="fas fa-shopping-cart"></i></span><span>Заказать</span></a>
+                    <a class="navbar-item" href="orders.html">
+                        <span class="icon"><i class="fas fa-history"></i></span>
+                        <span>История</span>
+                    </a>
+                    <a class="button is-success is-light" href="menu.html" style="margin:8px 0;">
+                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                        <span>Заказать</span>
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- ГЕРОЙ -->
+    <!-- ============================================================ -->
+    <!-- ГЕРОЙ-ЭКРАН (ЭЛЬБРУС) -->
+    <!-- ============================================================ -->
     <section class="hero is-fullheight hero-elbrus">
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="snow-icon" style="font-size:4rem; margin-bottom:1rem;">❄️</div>
-                <h1 class="title is-1 has-text-white" style="text-shadow:0 2px 20px rgba(0,0,0,0.6);">Еда на высоте 3900 м</h1>
-                <p class="subtitle is-3 has-text-white" style="text-shadow:0 2px 10px rgba(0,0,0,0.5);">Закажите горячий обед в кафе «Приют одиннадцати»</p>
-                <p class="has-text-white is-size-5" style="max-width:600px; margin:1rem auto; opacity:0.9;">💳 Предоплата онлайн • 📜 История заказов • ⏱️ Готовность к вашему приходу</p>
+                <h1 class="title is-1 has-text-white" style="text-shadow:0 2px 20px rgba(0,0,0,0.6);">
+                    Еда на высоте 3900 м
+                </h1>
+                <p class="subtitle is-3 has-text-white" style="text-shadow:0 2px 10px rgba(0,0,0,0.5);">
+                    Закажите горячий обед в кафе «Приют одиннадцати»
+                </p>
+                <p class="has-text-white is-size-5" style="max-width:600px; margin:1rem auto; opacity:0.9;">
+                    💳 Предоплата онлайн • 📜 История заказов • ⏱️ Готовность к вашему приходу
+                </p>
                 <div class="buttons is-centered" style="margin-top:2rem;">
-                    <a href="menu.html" class="button is-success is-large"><span class="icon"><i class="fas fa-utensils"></i></span><span>Смотреть меню</span></a>
+                    <a href="menu.html" class="button is-success is-large">
+                        <span class="icon"><i class="fas fa-utensils"></i></span>
+                        <span>Смотреть меню</span>
+                    </a>
                 </div>
                 <div style="margin-top:2rem;">
                     <span class="tag is-light is-medium">🚀 Работаем с 8:00 до 20:00</span>
@@ -85,12 +224,15 @@
         </div>
     </section>
 
+    <!-- ============================================================ -->
     <!-- СИСТЕМА КОДОВ (ВХОД БЕЗ РЕГИСТРАЦИИ) -->
+    <!-- ============================================================ -->
     <section class="section" style="background:#f0f4f8;">
         <div class="container">
             <h2 class="title is-2 has-text-centered" style="color:#1a1a2e;">🔑 Вход в личный кабинет</h2>
             <p class="has-text-centered has-text-grey">Получите персональный код для доступа к истории заказов</p>
             <div class="columns is-centered" style="margin-top:2rem;">
+                <!-- НОВЫЙ ПОСЕТИТЕЛЬ -->
                 <div class="column is-5">
                     <div class="code-box">
                         <h3 class="title is-5 has-text-centered">Новый посетитель</h3>
@@ -105,42 +247,83 @@
                             <p class="has-text-grey is-size-7">Ваш персональный код:</p>
                             <div class="code-display" id="generatedCode">XXXXX</div>
                             <p class="has-text-grey is-size-7 mt-3">Сохраните его! Код нужен для входа в историю заказов.</p>
-                            <button class="button is-primary is-small mt-2" onclick="copyCode()"><i class="fas fa-copy"></i> Копировать</button>
+                            <button class="button is-primary is-small mt-2" onclick="copyCode()">
+                                <i class="fas fa-copy"></i> Копировать
+                            </button>
                         </div>
                     </div>
                 </div>
+                <!-- УЖЕ ЕСТЬ КОД -->
                 <div class="column is-5">
                     <div class="code-box">
                         <h3 class="title is-5 has-text-centered">Уже есть код?</h3>
                         <p class="has-text-centered has-text-grey is-size-7">Введите ваш 5-значный код для входа</p>
                         <div class="field" style="margin:1.5rem 0;">
                             <div class="control">
-                                <input class="input is-large has-text-centered" type="text" id="loginCode" placeholder="Например: A7K3F" maxlength="5" style="text-transform:uppercase; font-weight:bold; letter-spacing:4px;">
+                                <input class="input is-large has-text-centered" type="text" id="loginCode"
+                                       placeholder="Например: A7K3F" maxlength="5"
+                                       style="text-transform:uppercase; font-weight:bold; letter-spacing:4px;">
                             </div>
                         </div>
                         <div class="has-text-centered">
                             <button class="button is-primary is-large" id="loginBtn">Войти</button>
                         </div>
-                        <div id="loginError" class="has-text-danger has-text-centered mt-2" style="display:none;">❌ Неверный код. Попробуйте снова.</div>
+                        <div id="loginError" class="has-text-danger has-text-centered mt-2" style="display:none;">
+                            ❌ Неверный код. Попробуйте снова.
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- ТЕКУЩИЙ ПОЛЬЗОВАТЕЛЬ -->
             <div id="currentUserDisplay" class="has-text-centered mt-4" style="display:none;">
-                <span class="tag is-success is-medium">✅ Вы вошли как: <strong id="currentUserCode">—</strong></span>
+                <span class="tag is-success is-medium">
+                    ✅ Вы вошли как: <strong id="currentUserCode">—</strong>
+                </span>
                 <button class="button is-danger is-small" id="logoutBtn">Выйти</button>
             </div>
         </div>
     </section>
 
-    <!-- ПОПУЛЯРНЫЕ БЛЮДА (ЯРКИЙ ЗАГОЛОВОК) -->
+    <!-- ============================================================ -->
+    <!-- ПОЧЕМУ МЫ -->
+    <!-- ============================================================ -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="title is-2 has-text-centered">Почему выбирают ElbrusEat?</h2>
+            <div class="columns is-centered" style="margin-top:2rem;">
+                <div class="column is-4 has-text-centered">
+                    <div class="feature-icon"><i class="fas fa-mountain"></i></div>
+                    <h3 class="title is-5">Кафе на вершине</h3>
+                    <p>Единственное кафе на южном склоне Эльбруса с горячими блюдами и видом на горы.</p>
+                </div>
+                <div class="column is-4 has-text-centered">
+                    <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
+                    <h3 class="title is-5">Предоплата онлайн</h3>
+                    <p>Оплатите заказ картой заранее — мы приготовим его точно к вашему приходу.</p>
+                </div>
+                <div class="column is-4 has-text-centered">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h3 class="title is-5">История заказов</h3>
+                    <p>Все ваши заказы сохраняются — повторите любимое блюдо в один клик.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ПОПУЛЯРНЫЕ БЛЮДА -->
+    <!-- ============================================================ -->
     <section class="section has-background-light">
         <div class="container">
             <h2 class="title is-2 has-text-centered" style="color:#1a1a2e; font-weight:800;">🔥 Самые популярные блюда</h2>
             <p class="has-text-centered has-text-grey mb-5">Приготовлены на профессиональной кухне из продуктов длительного хранения</p>
             <div class="columns">
+                <!-- Солянка -->
                 <div class="column is-4">
-                    <div class="card">
-                        <div class="card-image"><figure class="image is-4by3"><img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Солянка" alt="Солянка"></figure></div>
+                    <div class="card card-service">
+                        <div class="card-image">
+                            <figure class="image"><img src="images/солянка сборная мясная фото.jpg" alt="Солянка"></figure>
+                        </div>
                         <div class="card-content">
                             <h3 class="title is-5">Солянка сборная мясная</h3>
                             <p class="has-text-grey is-size-7">Говядина тушёная, ветчина, огурцы, оливки</p>
@@ -149,9 +332,12 @@
                         </div>
                     </div>
                 </div>
+                <!-- Гуляш -->
                 <div class="column is-4">
-                    <div class="card">
-                        <div class="card-image"><figure class="image is-4by3"><img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Гуляш" alt="Гуляш"></figure></div>
+                    <div class="card card-service">
+                        <div class="card-image">
+                            <figure class="image"><img src="images/гуляш по-венгерски фото.jpg" alt="Гуляш"></figure>
+                        </div>
                         <div class="card-content">
                             <h3 class="title is-5">Гуляш по-венгерски</h3>
                             <p class="has-text-grey is-size-7">Говядина тушёная, паприка, томат, картофель</p>
@@ -160,9 +346,12 @@
                         </div>
                     </div>
                 </div>
+                <!-- Плов -->
                 <div class="column is-4">
-                    <div class="card">
-                        <div class="card-image"><figure class="image is-4by3"><img src="https://via.placeholder.com/400x300/2d7d46/FFFFFF?text=Плов" alt="Плов"></figure></div>
+                    <div class="card card-service">
+                        <div class="card-image">
+                            <figure class="image"><img src="images/плов с бараниной фото.jpg" alt="Плов"></figure>
+                        </div>
                         <div class="card-content">
                             <h3 class="title is-5">Плов с бараниной</h3>
                             <p class="has-text-grey is-size-7">Баранина тушёная, рис, морковь, зира, барбарис</p>
@@ -178,39 +367,56 @@
         </div>
     </section>
 
-    <!-- ПРЕВЬЮ ПОСЛЕДНИХ ЗАКАЗОВ (ЯРКИЙ) -->
+    <!-- ============================================================ -->
+    <!-- ПРЕВЬЮ ПОСЛЕДНИХ ЗАКАЗОВ -->
+    <!-- ============================================================ -->
     <section id="last-orders" class="section">
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-8">
                     <h2 class="title is-2 has-text-centered" style="color:#1a1a2e; font-weight:700;">📜 Ваши последние заказы</h2>
                     <div id="orderHistoryPreview">
-                        <div class="history-empty"><i class="fas fa-history fa-3x has-text-grey-light"></i><p class="is-size-5 mt-3">У вас пока нет заказов.</p><p class="has-text-grey">Сделайте первый заказ через меню!</p></div>
+                        <div class="history-empty">
+                            <i class="fas fa-history fa-3x has-text-grey-light"></i>
+                            <p class="is-size-5 mt-3">Войдите, чтобы увидеть историю заказов</p>
+                        </div>
                     </div>
                     <div class="has-text-centered mt-4">
                         <a href="orders.html" class="button is-link is-medium">Полная история заказов →</a>
-                        <button class="button is-danger is-light is-medium" id="clearHistoryBtn"><i class="fas fa-trash"></i> Очистить мою историю</button>
+                        <button class="button is-danger is-light is-medium" id="clearHistoryBtn">
+                            <i class="fas fa-trash"></i> Очистить мою историю
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ============================================================ -->
+    <!-- CTA — ПРИЗЫВ К ДЕЙСТВИЮ -->
+    <!-- ============================================================ -->
     <section class="section">
         <div class="container">
             <div class="cta-section has-text-white has-text-centered">
                 <h2 class="title is-2 has-text-white">Готовы заказать?</h2>
                 <p class="subtitle is-5 has-text-white">Выберите блюда в меню, добавьте в корзину и оплатите онлайн</p>
                 <div class="buttons is-centered">
-                    <a href="menu.html" class="button is-light is-large"><span class="icon"><i class="fas fa-utensils"></i></span><span>Перейти в меню</span></a>
-                    <a href="orders.html" class="button is-success is-large"><span class="icon"><i class="fas fa-history"></i></span><span>Мои заказы</span></a>
+                    <a href="menu.html" class="button is-light is-large">
+                        <span class="icon"><i class="fas fa-utensils"></i></span>
+                        <span>Перейти в меню</span>
+                    </a>
+                    <a href="orders.html" class="button is-success is-large">
+                        <span class="icon"><i class="fas fa-history"></i></span>
+                        <span>Мои заказы</span>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ============================================================ -->
     <!-- ФУТЕР -->
+    <!-- ============================================================ -->
     <footer class="footer">
         <div class="container">
             <div class="columns">
@@ -221,12 +427,12 @@
                 </div>
                 <div class="column">
                     <h4 class="title is-5 has-text-white">Навигация</h4>
-                    <p><a class="has-text-grey-light" href="index.html">Главная</a></p>
-                    <p><a class="has-text-grey-light" href="menu.html">Меню</a></p>
-                    <p><a class="has-text-grey-light" href="about.html">О нас</a></p>
-                    <p><a class="has-text-grey-light" href="orders.html">История заказов</a></p>
-                    <p><a class="has-text-grey-light" href="faq.html">FAQ</a></p>
-                    <p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p>
+                    <p><a href="index.html">Главная</a></p>
+                    <p><a href="menu.html">Меню</a></p>
+                    <p><a href="about.html">О нас</a></p>
+                    <p><a href="orders.html">История заказов</a></p>
+                    <p><a href="faq.html">FAQ</a></p>
+                    <p><a href="contacts.html">Контакты</a></p>
                 </div>
                 <div class="column">
                     <h4 class="title is-5 has-text-white">Контакты</h4>
@@ -236,9 +442,9 @@
                 </div>
                 <div class="column">
                     <h4 class="title is-5 has-text-white">Мы в соцсетях</h4>
-                    <a class="has-text-grey-light" href="#"><i class="fab fa-vk"></i> ВКонтакте</a><br>
-                    <a class="has-text-grey-light" href="#"><i class="fab fa-telegram"></i> Telegram</a><br>
-                    <a class="has-text-grey-light" href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="#"><i class="fab fa-vk"></i> ВКонтакте</a><br>
+                    <a href="#"><i class="fab fa-telegram"></i> Telegram</a><br>
+                    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
                 </div>
             </div>
             <hr style="border-color:#333;">
@@ -246,8 +452,35 @@
         </div>
     </footer>
 
+    <!-- ============================================================ -->
+    <!-- СКРИПТЫ -->
+    <!-- ============================================================ -->
     <script>
-        // ======== СИСТЕМА КОДОВ ========
+        // ========================================================
+        // БУРГЕР-МЕНЮ
+        // ========================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.getElementById('navMenu');
+            if (burger && menu) {
+                burger.addEventListener('click', function() {
+                    burger.classList.toggle('is-active');
+                    menu.classList.toggle('is-active');
+                });
+            }
+            // Если пользователь уже есть — показываем
+            const saved = localStorage.getItem('elbrusUser');
+            if (saved) {
+                currentUser = saved;
+                updateUI();
+            } else {
+                updateUI();
+            }
+        });
+
+        // ========================================================
+        // СИСТЕМА КОДОВ
+        // ========================================================
         let currentUser = localStorage.getItem('elbrusUser') || null;
 
         function generateCode() {
@@ -262,7 +495,6 @@
         function saveUser(code) {
             localStorage.setItem('elbrusUser', code);
             currentUser = code;
-            // Создаём хранилище для заказов этого пользователя
             if (!localStorage.getItem('elbrusOrders_' + code)) {
                 localStorage.setItem('elbrusOrders_' + code, JSON.stringify([]));
             }
@@ -290,7 +522,10 @@
             } else {
                 display.style.display = 'none';
                 document.getElementById('orderHistoryPreview').innerHTML = `
-                    <div class="history-empty"><i class="fas fa-history fa-3x has-text-grey-light"></i><p class="is-size-5 mt-3">Войдите, чтобы увидеть историю заказов</p></div>
+                    <div class="history-empty">
+                        <i class="fas fa-history fa-3x has-text-grey-light"></i>
+                        <p class="is-size-5 mt-3">Войдите, чтобы увидеть историю заказов</p>
+                    </div>
                 `;
             }
         }
@@ -300,17 +535,19 @@
             const code = generateCode();
             document.getElementById('generatedCode').textContent = code;
             document.getElementById('newCodeDisplay').style.display = 'block';
-            // Автоматически сохраняем пользователя
             saveUser(code);
             alert('✅ Ваш код: ' + code + '. Сохраните его!');
         });
 
-        function copyCode() {
+        // Копирование кода
+        window.copyCode = function() {
             const code = document.getElementById('generatedCode').textContent;
-            navigator.clipboard.writeText(code).then(() => {
+            navigator.clipboard.writeText(code).then(function() {
                 alert('✅ Код скопирован: ' + code);
+            }).catch(function() {
+                alert('❌ Не удалось скопировать. Скопируйте вручную: ' + code);
             });
-        }
+        };
 
         // Вход по коду
         document.getElementById('loginBtn').addEventListener('click', function() {
@@ -319,7 +556,6 @@
                 document.getElementById('loginError').style.display = 'block';
                 return;
             }
-            // Проверяем, существует ли пользователь с таким кодом
             const testOrders = localStorage.getItem('elbrusOrders_' + input);
             if (testOrders !== null) {
                 saveUser(input);
@@ -339,6 +575,59 @@
             alert('✅ Вы вышли из системы');
         });
 
+        // ========================================================
+        // ИСТОРИЯ ЗАКАЗОВ
+        // ========================================================
+        function loadOrderPreview() {
+            const container = document.getElementById('orderHistoryPreview');
+            if (!currentUser) {
+                container.innerHTML = `
+                    <div class="history-empty">
+                        <i class="fas fa-history fa-3x has-text-grey-light"></i>
+                        <p class="is-size-5 mt-3">Войдите, чтобы увидеть историю заказов</p>
+                    </div>
+                `;
+                return;
+            }
+            const orders = getOrders();
+            if (orders.length === 0) {
+                container.innerHTML = `
+                    <div class="history-empty">
+                        <i class="fas fa-history fa-3x has-text-grey-light"></i>
+                        <p class="is-size-5 mt-3">У вас пока нет заказов.</p>
+                        <p class="has-text-grey">Сделайте первый заказ через меню!</p>
+                    </div>
+                `;
+                return;
+            }
+            const lastOrders = orders.slice(-3).reverse();
+            let html = '';
+            lastOrders.forEach(function(order) {
+                const statusClass = order.status === 'Оплачен' ? 'status-paid' :
+                                   order.status === 'Готовится' ? 'status-ready' : 'status-done';
+                html += `
+                    <div class="box order-card">
+                        <div class="columns is-vcentered">
+                            <div class="column is-4">
+                                <strong>${order.name}</strong><br>
+                                <span class="has-text-grey is-size-7">${order.date}</span>
+                            </div>
+                            <div class="column is-4">
+                                <span class="tag">${order.dishes.join(', ')}</span>
+                            </div>
+                            <div class="column is-2">
+                                <strong>${order.total} ₽</strong>
+                            </div>
+                            <div class="column is-2">
+                                <span class="order-status ${statusClass}">${order.status}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
         // Очистка истории
         document.getElementById('clearHistoryBtn').addEventListener('click', function() {
             if (!currentUser) {
@@ -349,61 +638,6 @@
                 saveOrders([]);
                 loadOrderPreview();
                 alert('✅ История очищена');
-            }
-        });
-
-        // Загрузка превью
-        function loadOrderPreview() {
-            const container = document.getElementById('orderHistoryPreview');
-            if (!currentUser) {
-                container.innerHTML = `<div class="history-empty"><i class="fas fa-history fa-3x has-text-grey-light"></i><p class="is-size-5 mt-3">Войдите, чтобы увидеть историю заказов</p></div>`;
-                return;
-            }
-            const orders = getOrders();
-            if (orders.length === 0) {
-                container.innerHTML = `<div class="history-empty"><i class="fas fa-history fa-3x has-text-grey-light"></i><p class="is-size-5 mt-3">У вас пока нет заказов.</p><p class="has-text-grey">Сделайте первый заказ через меню!</p></div>`;
-                return;
-            }
-            const lastOrders = orders.slice(-3).reverse();
-            let html = '';
-            lastOrders.forEach((order) => {
-                const statusClass = order.status === 'Оплачен' ? 'status-paid' : 'status-ready';
-                html += `
-                    <div class="box order-card">
-                        <div class="columns is-vcentered">
-                            <div class="column is-4"><strong>${order.name}</strong><br><span class="has-text-grey is-size-7">${order.date}</span></div>
-                            <div class="column is-4"><span class="tag">${order.dishes.join(', ')}</span></div>
-                            <div class="column is-2"><strong>${order.total} ₽</strong></div>
-                            <div class="column is-2"><span class="order-status ${statusClass}">${order.status}</span></div>
-                        </div>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        // Бургер-меню
-        document.addEventListener('DOMContentLoaded', () => {
-            const burger = document.querySelector('.navbar-burger');
-            const menu = document.getElementById('navMenu');
-            if (burger && menu) {
-                burger.addEventListener('click', () => {
-                    burger.classList.toggle('is-active');
-                    menu.classList.toggle('is-active');
-                });
-            }
-            // Если пользователь уже есть — показываем
-            if (currentUser) {
-                updateUI();
-            } else {
-                // Проверяем, может быть старый пользователь уже сохранён
-                const saved = localStorage.getItem('elbrusUser');
-                if (saved) {
-                    currentUser = saved;
-                    updateUI();
-                } else {
-                    updateUI();
-                }
             }
         });
     </script>
