@@ -1,92 +1,108 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О нас | ElbrusEat</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <style>
-        .about-hero { background: linear-gradient(135deg, #1a3a5c, #2d7d46); background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=400&fit=crop'); background-size: cover; background-position: center; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .feature-item { text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .feature-item .icon { font-size: 3rem; color: #2d7d46; }
-        footer { background: #1a1a2e; }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar is-fixed-top is-dark">
-        <div class="container">
-            <div class="navbar-brand"><a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">🏔️ ElbrusEat</a></div>
-            <div class="navbar-menu">
-                <div class="navbar-end">
-                    <a class="navbar-item" href="index.html">Главная</a>
-                    <a class="navbar-item" href="menu.html">Меню</a>
-                    <a class="navbar-item is-active" href="about.html">О нас</a>
-                    <a class="navbar-item" href="orders.html">История</a>
-                    <a class="navbar-item" href="faq.html">FAQ</a>
-                    <a class="navbar-item" href="contacts.html">Контакты</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero is-medium about-hero has-text-white">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title is-1 has-text-white">🏔️ О нас</h1>
-                <p class="subtitle is-4 has-text-white">Кафе «Приют одиннадцати» на высоте 3900 метров</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="content is-large">
-                <h2 class="title is-2">История кафе</h2>
-                <p>
-                    Кафе «Приют одиннадцати» было основано в 1960-х годах как место отдыха альпинистов 
-                    после восхождения на Эльбрус. За десятилетия оно стало легендой: здесь останавливались 
-                    первопроходцы, здесь писали свои маршруты чемпионы мира по альпинизму.
-                </p>
-                <p>
-                    Сегодня мы сохраняем традиции гостеприимства, но с современным подходом. Наша миссия — 
-                    дать каждому туристу возможность насладиться горячим ресторанным обедом, не спускаясь 
-                    с горы.
-                </p>
-                <p>
-                    <strong>ElbrusEat</strong> — это цифровой сервис кафе. Мы первыми на Эльбрусе внедрили 
-                    систему предоплаты и онлайн-заказа, чтобы вы могли планировать свой день, а не стоять в очереди.
-                </p>
-            </div>
-
-            <h2 class="title is-2 mt-6">Почему именно мы?</h2>
-            <div class="feature-grid">
-                <div class="feature-item"><div class="icon"><i class="fas fa-mountain"></i></div><h4 class="title is-5">Уникальное расположение</h4><p>Единственное кафе на южном склоне Эльбруса с панорамным видом.</p></div>
-                <div class="feature-item"><div class="icon"><i class="fas fa-utensils"></i></div><h4 class="title is-5">Ресторанная кухня</h4><p>Профессиональный повар, меню из 18 блюд. Всё как в ресторане в городе.</p></div>
-                <div class="feature-item"><div class="icon"><i class="fas fa-credit-card"></i></div><h4 class="title is-5">Предоплата онлайн</h4><p>Оплачивайте заранее — мы приготовим точно к вашему приходу.</p></div>
-                <div class="feature-item"><div class="icon"><i class="fas fa-clock"></i></div><h4 class="title is-5">История заказов</h4><p>Повторяйте любимые блюда в один клик. Все заказы сохраняются.</p></div>
-                <div class="feature-item"><div class="icon"><i class="fas fa-can-food"></i></div><h4 class="title is-5">Продукты высшего качества</h4><p>Мы используем только премиальные консервы и крупы. Никакой «дешёвки».</p></div>
-                <div class="feature-item"><div class="icon"><i class="fas fa-shield-alt"></i></div><h4 class="title is-5">Безопасность</h4><p>Ваши данные защищены. Оплата через проверенные шлюзы.</p></div>
-            </div>
-
-            <div class="has-text-centered mt-6">
-                <a href="menu.html" class="button is-success is-large"><span class="icon"><i class="fas fa-utensils"></i></span><span>Перейти в меню</span></a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="columns">
-                <div class="column"><h3 class="title is-4 has-text-white">🏔️ ElbrusEat</h3><p class="has-text-grey-light">Кафе на вершине Эльбруса</p></div>
-                <div class="column"><h4 class="title is-5 has-text-white">Навигация</h4><p><a class="has-text-grey-light" href="index.html">Главная</a></p><p><a class="has-text-grey-light" href="menu.html">Меню</a></p><p><a class="has-text-grey-light" href="about.html">О нас</a></p><p><a class="has-text-grey-light" href="orders.html">История</a></p><p><a class="has-text-grey-light" href="faq.html">FAQ</a></p><p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p></div>
-                <div class="column"><h4 class="title is-5 has-text-white">Контакты</h4><p class="has-text-grey-light">+7 (928) 777-39-00</p><p class="has-text-grey-light">eat@elbrus.ru</p></div>
-            </div>
-            <p class="has-text-centered has-text-grey-light">© 2026 ElbrusEat</p>
-        </div>
-    </footer>
-
-</body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас | ElbrusEat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .about-hero { background: linear-gradient(135deg, #1a3a5c, #2d7d46); background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=400&fit=crop'); background-size: cover; background-position: center; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .feature-item { text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .feature-item .icon { font-size: 3rem; color: #2d7d46; }
+        footer { background: #1a1a2e; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar is-fixed-top is-dark">
+        <div class="container">
+            <div class="navbar-brand"><a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">🏔️ ElbrusEat</a>
+                <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="index.html">Главная</a>
+                    <a class="navbar-item" href="menu.html">Меню</a>
+                    <a class="navbar-item is-active" href="about.html">О нас</a>
+                    <a class="navbar-item" href="orders.html">История</a>
+                    <a class="navbar-item" href="faq.html">FAQ</a>
+                    <a class="navbar-item" href="contacts.html">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-medium about-hero has-text-white">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-1 has-text-white">🏔️ О нас</h1>
+                <p class="subtitle is-4 has-text-white">Кафе «Приют одиннадцати» на высоте 3900 метров</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="content is-large">
+                <h2 class="title is-2">История кафе</h2>
+                <p>
+                    Кафе «Приют одиннадцати» было основано в 1960-х годах как место отдыха альпинистов 
+                    после восхождения на Эльбрус. За десятилетия оно стало легендой: здесь останавливались 
+                    первопроходцы, здесь писали свои маршруты чемпионы мира по альпинизму.
+                </p>
+                <p>
+                    Сегодня мы сохраняем традиции гостеприимства, но с современным подходом. Наша миссия — 
+                    дать каждому туристу возможность насладиться горячим ресторанным обедом, не спускаясь 
+                    с горы.
+                </p>
+                <p>
+                    <strong>ElbrusEat</strong> — это цифровой сервис кафе. Мы первыми на Эльбрусе внедрили 
+                    систему предоплаты и онлайн-заказа, чтобы вы могли планировать свой день, а не стоять в очереди.
+                </p>
+            </div>
+
+            <h2 class="title is-2 mt-6">Почему именно мы?</h2>
+            <div class="feature-grid">
+                <div class="feature-item"><div class="icon"><i class="fas fa-mountain"></i></div><h4 class="title is-5">Уникальное расположение</h4><p>Единственное кафе на южном склоне Эльбруса с панорамным видом.</p></div>
+                <div class="feature-item"><div class="icon"><i class="fas fa-utensils"></i></div><h4 class="title is-5">Ресторанная кухня</h4><p>Профессиональный повар, меню из 18 блюд. Всё как в ресторане в городе.</p></div>
+                <div class="feature-item"><div class="icon"><i class="fas fa-credit-card"></i></div><h4 class="title is-5">Предоплата онлайн</h4><p>Оплачивайте заранее — мы приготовим точно к вашему приходу.</p></div>
+                <div class="feature-item"><div class="icon"><i class="fas fa-clock"></i></div><h4 class="title is-5">История заказов</h4><p>Повторяйте любимые блюда в один клик. Все заказы сохраняются.</p></div>
+                <div class="feature-item"><div class="icon"><i class="fas fa-box"></i></div><h4 class="title is-5">Продукты высшего качества</h4><p>Мы используем только премиальные консервы и крупы. Никакой «дешёвки».</p></div>
+                <div class="feature-item"><div class="icon"><i class="fas fa-shield-alt"></i></div><h4 class="title is-5">Безопасность</h4><p>Ваши данные защищены. Оплата через проверенные шлюзы.</p></div>
+            </div>
+
+            <div class="has-text-centered mt-6">
+                <a href="menu.html" class="button is-success is-large"><span class="icon"><i class="fas fa-utensils"></i></span><span>Перейти в меню</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column"><h3 class="title is-4 has-text-white">🏔️ ElbrusEat</h3><p class="has-text-grey-light">Кафе на вершине Эльбруса</p></div>
+                <div class="column"><h4 class="title is-5 has-text-white">Навигация</h4><p><a class="has-text-grey-light" href="index.html">Главная</a></p><p><a class="has-text-grey-light" href="menu.html">Меню</a></p><p><a class="has-text-grey-light" href="about.html">О нас</a></p><p><a class="has-text-grey-light" href="orders.html">История</a></p><p><a class="has-text-grey-light" href="faq.html">FAQ</a></p><p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p></div>
+                <div class="column"><h4 class="title is-5 has-text-white">Контакты</h4><p class="has-text-grey-light">+7 (928) 777-39-00</p><p class="has-text-grey-light">eat@elbrus.ru</p></div>
+            </div>
+            <p class="has-text-centered has-text-grey-light">© 2026 ElbrusEat</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.getElementById('navMenu');
+            if (burger && menu) {
+                burger.addEventListener('click', function() {
+                    burger.classList.toggle('is-active');
+                    menu.classList.toggle('is-active');
+                });
+            }
+        });
+    </script>
+
+</body>
 </html>

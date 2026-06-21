@@ -1,174 +1,189 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>История заказов | ElbrusEat</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <style>
-        .history-hero { background: linear-gradient(135deg, #1a3a5c, #2d7d46); background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=400&fit=crop'); background-size: cover; background-position: center; }
-        .order-card { border-left: 4px solid #2d7d46; border-radius: 8px; margin-bottom: 1rem; transition: transform 0.2s; }
-        .order-card:hover { transform: translateX(4px); }
-        .status-paid { background: #2ecc71; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
-        .status-ready { background: #f39c12; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
-        .status-done { background: #95a5a6; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
-        .history-empty { text-align: center; padding: 4rem; color: #95a5a6; }
-        footer { background: #1a1a2e; }
-                /* ========== ИСТОРИЯ ЗАКАЗОВ — ПЕРЕНОС СТРОК ========== */
-        .order-card .tag {
-            white-space: normal !important;
-            height: auto !important;
-            word-break: break-word;
-            margin: 2px 4px 2px 0;
-        }
-        .order-card .column {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-        @media screen and (max-width: 768px) {
-            .order-card .columns {
-                flex-direction: column;
-            }
-            .order-card .column {
-                margin-bottom: 8px;
-            }
-            .order-card .column:last-child {
-                margin-bottom: 0;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <nav class="navbar is-fixed-top is-dark">
-        <div class="container">
-            <div class="navbar-brand"><a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">🏔️ ElbrusEat</a></div>
-            <div class="navbar-menu">
-                <div class="navbar-end">
-                    <a class="navbar-item" href="index.html">Главная</a>
-                    <a class="navbar-item" href="menu.html">Меню</a>
-                    <a class="navbar-item" href="about.html">О нас</a>
-                    <a class="navbar-item is-active" href="orders.html">История</a>
-                    <a class="navbar-item" href="faq.html">FAQ</a>
-                    <a class="navbar-item" href="contacts.html">Контакты</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <section class="hero is-medium history-hero has-text-white">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title is-1 has-text-white">📜 История заказов</h1>
-                <p class="subtitle is-4 has-text-white">Все ваши заказы в кафе на Эльбрусе</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-9">
-                    <div class="box">
-                        <div class="level">
-                            <div class="level-left"><h2 class="title is-4">Ваши заказы</h2></div>
-                            <div class="level-right">
-                                <button class="button is-danger is-light is-small" id="clearHistoryBtn"><i class="fas fa-trash"></i> Очистить историю</button>
-                            </div>
-                        </div>
-                        <div id="orderHistoryFull"><div class="history-empty"><i class="fas fa-history fa-4x has-text-grey-light"></i><p class="is-size-4 mt-3">Войдите, чтобы увидеть заказы</p></div></div>
-                    </div>
-                    <div class="has-text-centered mt-4">
-                        <a href="menu.html" class="button is-success is-medium"><span class="icon"><i class="fas fa-plus"></i></span><span>Сделать новый заказ</span></a>
-                        <a href="index.html" class="button is-link is-medium">← На главную</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="columns">
-                <div class="column"><h3 class="title is-4 has-text-white">🏔️ ElbrusEat</h3><p class="has-text-grey-light">Кафе на вершине Эльбруса</p></div>
-                <div class="column"><h4 class="title is-5 has-text-white">Навигация</h4><p><a class="has-text-grey-light" href="index.html">Главная</a></p><p><a class="has-text-grey-light" href="menu.html">Меню</a></p><p><a class="has-text-grey-light" href="about.html">О нас</a></p><p><a class="has-text-grey-light" href="orders.html">История</a></p><p><a class="has-text-grey-light" href="faq.html">FAQ</a></p><p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p></div>
-                <div class="column"><h4 class="title is-5 has-text-white">Контакты</h4><p class="has-text-grey-light">+7 (928) 777-39-00</p><p class="has-text-grey-light">eat@elbrus.ru</p></div>
-            </div>
-            <p class="has-text-centered has-text-grey-light">© 2026 ElbrusEat</p>
-        </div>
-    </footer>
-
-    <script>
-        let currentUser = localStorage.getItem('elbrusUser') || null;
-
-        function getOrders() {
-            if (!currentUser) return [];
-            const data = localStorage.getItem('elbrusOrders_' + currentUser);
-            return data ? JSON.parse(data) : [];
-        }
-
-        function saveOrders(orders) {
-            if (!currentUser) return;
-            localStorage.setItem('elbrusOrders_' + currentUser, JSON.stringify(orders));
-        }
-
-        function loadHistory() {
-            const container = document.getElementById('orderHistoryFull');
-            if (!currentUser) {
-                container.innerHTML = `<div class="history-empty"><i class="fas fa-history fa-4x has-text-grey-light"></i><p class="is-size-4 mt-3">Войдите в систему</p><p class="has-text-grey">Перейдите на <a href="index.html">главную страницу</a> и получите код</p></div>`;
-                return;
-            }
-            const orders = getOrders();
-            if (orders.length === 0) {
-                container.innerHTML = `<div class="history-empty"><i class="fas fa-history fa-4x has-text-grey-light"></i><p class="is-size-4 mt-3">История пуста</p><p class="has-text-grey">Сделайте первый заказ в <a href="menu.html">меню</a></p></div>`;
-                return;
-            }
-            let html = '';
-            const reversed = [...orders].reverse();
-            reversed.forEach((order) => {
-                const statusClass = order.status === 'Оплачен' ? 'status-paid' : 'status-ready';
-                // Форматируем список блюд с переносом строк
-                let dishesHtml = '';
-                order.dishes.forEach((dish, index) => {
-                    dishesHtml += `<span class="tag is-small" style="margin:2px 4px 2px 0; white-space:normal; height:auto; word-break:break-word;">${dish}</span>`;
-                });
-                html += `
-                    <div class="box order-card">
-                        <div class="columns is-vcentered">
-                            <div class="column is-3">
-                                <strong>${order.name}</strong><br>
-                                <span class="has-text-grey is-size-7">${order.date}</span>
-                            </div>
-                            <div class="column is-4" style="word-wrap:break-word; overflow-wrap:break-word; white-space:normal;">
-                                ${dishesHtml}
-                                ${order.time ? `<br><span class="has-text-grey is-size-7">⏱️ ${order.time}</span>` : ''}
-                            </div>
-                            <div class="column is-2">
-                                <strong class="is-size-5">${order.total} ₽</strong>
-                            </div>
-                            <div class="column is-2">
-                                <span class="${statusClass}">${order.status}</span>
-                            </div>
-                        </div>
-                        ${order.comment && order.comment !== '—' ? `<div class="has-text-grey is-size-7 mt-2">💬 ${order.comment}</div>` : ''}
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
-        document.getElementById('clearHistoryBtn').addEventListener('click', function() {
-            if (!currentUser) { alert('Войдите в систему!'); return; }
-            if (confirm('Удалить ВСЮ историю заказов?')) {
-                saveOrders([]);
-                loadHistory();
-                alert('✅ История очищена');
-            }
-        });
-
-        loadHistory();
-    </script>
-
-</body>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История заказов | ElbrusEat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .history-hero { background: linear-gradient(135deg, #1a3a5c, #2d7d46); background-image: url('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1200&h=400&fit=crop'); background-size: cover; background-position: center; }
+        .order-card { border-left: 4px solid #2d7d46; border-radius: 8px; margin-bottom: 1rem; transition: transform 0.2s; }
+        .order-card:hover { transform: translateX(4px); }
+        .status-paid { background: #2ecc71; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
+        .status-ready { background: #f39c12; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
+        .status-done { background: #95a5a6; color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.85rem; }
+        .history-empty { text-align: center; padding: 4rem; color: #95a5a6; }
+        footer { background: #1a1a2e; }
+                /* ========== ИСТОРИЯ ЗАКАЗОВ — ПЕРЕНОС СТРОК ========== */
+        .order-card .tag {
+            white-space: normal !important;
+            height: auto !important;
+            word-break: break-word;
+            margin: 2px 4px 2px 0;
+        }
+        .order-card .column {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        @media screen and (max-width: 768px) {
+            .order-card .columns {
+                flex-direction: column;
+            }
+            .order-card .column {
+                margin-bottom: 8px;
+            }
+            .order-card .column:last-child {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar is-fixed-top is-dark">
+        <div class="container">
+            <div class="navbar-brand"><a class="navbar-item" href="index.html" style="font-weight:700; font-size:1.3rem;">🏔️ ElbrusEat</a>
+                <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="index.html">Главная</a>
+                    <a class="navbar-item" href="menu.html">Меню</a>
+                    <a class="navbar-item" href="about.html">О нас</a>
+                    <a class="navbar-item is-active" href="orders.html">История</a>
+                    <a class="navbar-item" href="faq.html">FAQ</a>
+                    <a class="navbar-item" href="contacts.html">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-medium history-hero has-text-white">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-1 has-text-white">📜 История заказов</h1>
+                <p class="subtitle is-4 has-text-white">Все ваши заказы в кафе на Эльбрусе</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-9">
+                    <div class="box">
+                        <div class="level">
+                            <div class="level-left"><h2 class="title is-4">Ваши заказы</h2></div>
+                            <div class="level-right">
+                                <button class="button is-danger is-light is-small" id="clearHistoryBtn"><i class="fas fa-trash"></i> Очистить историю</button>
+                            </div>
+                        </div>
+                        <div id="orderHistoryFull"><div class="history-empty"><i class="fas fa-history fa-4x has-text-grey-light"></i><p class="is-size-4 mt-3">Войдите, чтобы увидеть заказы</p></div></div>
+                    </div>
+                    <div class="has-text-centered mt-4">
+                        <a href="menu.html" class="button is-success is-medium"><span class="icon"><i class="fas fa-plus"></i></span><span>Сделать новый заказ</span></a>
+                        <a href="index.html" class="button is-link is-medium">← На главную</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns">
+                <div class="column"><h3 class="title is-4 has-text-white">🏔️ ElbrusEat</h3><p class="has-text-grey-light">Кафе на вершине Эльбруса</p></div>
+                <div class="column"><h4 class="title is-5 has-text-white">Навигация</h4><p><a class="has-text-grey-light" href="index.html">Главная</a></p><p><a class="has-text-grey-light" href="menu.html">Меню</a></p><p><a class="has-text-grey-light" href="about.html">О нас</a></p><p><a class="has-text-grey-light" href="orders.html">История</a></p><p><a class="has-text-grey-light" href="faq.html">FAQ</a></p><p><a class="has-text-grey-light" href="contacts.html">Контакты</a></p></div>
+                <div class="column"><h4 class="title is-5 has-text-white">Контакты</h4><p class="has-text-grey-light">+7 (928) 777-39-00</p><p class="has-text-grey-light">eat@elbrus.ru</p></div>
+            </div>
+            <p class="has-text-centered has-text-grey-light">© 2026 ElbrusEat</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.getElementById('navMenu');
+            if (burger && menu) {
+                burger.addEventListener('click', function() {
+                    burger.classList.toggle('is-active');
+                    menu.classList.toggle('is-active');
+                });
+            }
+        });
+
+        let currentUser = localStorage.getItem('elbrusUser') || null;
+
+        function getOrders() {
+            if (!currentUser) return [];
+            const data = localStorage.getItem('elbrusOrders_' + currentUser);
+            return data ? JSON.parse(data) : [];
+        }
+
+        function saveOrders(orders) {
+            if (!currentUser) return;
+            localStorage.setItem('elbrusOrders_' + currentUser, JSON.stringify(orders));
+        }
+
+        function loadHistory() {
+            const container = document.getElementById('orderHistoryFull');
+            if (!currentUser) {
+                container.innerHTML = `<div class="history-empty"><i class="fas fa-history fa-4x has-text-grey-light"></i><p class="is-size-4 mt-3">Войдите в систему</p><p class="has-text-grey">Перейдите на <a href="index.html">главную страницу</a> и получите код</p></div>`;
+                return;
+            }
+            const orders = getOrders();
+            if (orders.length === 0) {
+                container.innerHTML = `<div class="history-empty"><i class="fas fa-history fa-4x has-text-grey-light"></i><p class="is-size-4 mt-3">История пуста</p><p class="has-text-grey">Сделайте первый заказ в <a href="menu.html">меню</a></p></div>`;
+                return;
+            }
+            let html = '';
+            const reversed = [...orders].reverse();
+            reversed.forEach((order) => {
+                const statusClass = order.status === 'Оплачен' ? 'status-paid' : 'status-ready';
+                // Форматируем список блюд с переносом строк
+                let dishesHtml = '';
+                order.dishes.forEach((dish, index) => {
+                    dishesHtml += `<span class="tag is-small" style="margin:2px 4px 2px 0; white-space:normal; height:auto; word-break:break-word;">${dish}</span>`;
+                });
+                html += `
+                    <div class="box order-card">
+                        <div class="columns is-vcentered">
+                            <div class="column is-3">
+                                <strong>${order.name}</strong><br>
+                                <span class="has-text-grey is-size-7">${order.date}</span>
+                            </div>
+                            <div class="column is-4" style="word-wrap:break-word; overflow-wrap:break-word; white-space:normal;">
+                                ${dishesHtml}
+                                ${order.time ? `<br><span class="has-text-grey is-size-7">⏱️ ${order.time}</span>` : ''}
+                            </div>
+                            <div class="column is-2">
+                                <strong class="is-size-5">${order.total} ₽</strong>
+                            </div>
+                            <div class="column is-2">
+                                <span class="${statusClass}">${order.status}</span>
+                            </div>
+                        </div>
+                        ${order.comment && order.comment !== '—' ? `<div class="has-text-grey is-size-7 mt-2">💬 ${order.comment}</div>` : ''}
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        document.getElementById('clearHistoryBtn').addEventListener('click', function() {
+            if (!currentUser) { alert('Войдите в систему!'); return; }
+            if (confirm('Удалить ВСЮ историю заказов?')) {
+                saveOrders([]);
+                loadHistory();
+                alert('✅ История очищена');
+            }
+        });
+
+        loadHistory();
+    </script>
+
+</body>
 </html>
